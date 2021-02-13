@@ -25,8 +25,8 @@ export class Borrower extends Person implements IBorrower {
         this.maxBorrowingAmount = maxBorrowingAmount
     }
 
-    return(loan: Loan, damaged: boolean = false): Loan {
-        loan.status = damaged ? LoanStatus.RETURNED_DAMAGED : LoanStatus.RETURNED
+    return(loan: Loan): Loan {
+        loan.status = LoanStatus.RETURN_STARTED
 
         this._amountAbleToBorrow = this._amountAbleToBorrow.add(loan.item.borrowingCost)
         if(this._amountAbleToBorrow.amount > this.maxBorrowingAmount.amount){
@@ -50,7 +50,7 @@ export class Borrower extends Person implements IBorrower {
             throw new InvalidThingStatusToBorrow(item.status)
         }
 
-        //we're good to borrow!
+        // we're good to borrow!
 
         // subtract the cost from what this person has available
         this._amountAbleToBorrow = this._amountAbleToBorrow.subtract(item.borrowingCost)
@@ -58,7 +58,7 @@ export class Borrower extends Person implements IBorrower {
         // change the item status
         item.status = ThingStatus.CURRENTLY_BORROWED
 
-        //return the loan
+        // return the loan
         // make the loan
         return new Loan(item, this, until)
     }

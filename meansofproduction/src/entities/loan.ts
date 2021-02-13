@@ -10,7 +10,7 @@ export class Loan {
     public readonly dueDate: Date
     private _active: boolean = true
     private _status: LoanStatus = LoanStatus.LOANED
-    private readonly returnLocation: Location
+    public readonly returnLocation: Location
 
     public constructor(item: Thing, borrower: Borrower, dueDate: Date, status: LoanStatus = LoanStatus.LOANED,
                        returnLocation: Location | null = null) {
