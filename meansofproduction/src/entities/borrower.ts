@@ -32,8 +32,8 @@ export class Borrower extends Person implements IBorrower {
         this.verificationFlags = verificationFlags
     }
 
-    return(loan: Loan, damaged: boolean = false): Loan {
-        loan.status = damaged ? LoanStatus.RETURNED_DAMAGED : LoanStatus.RETURNED
+    return(loan: Loan): Loan {
+        loan.status = LoanStatus.RETURN_STARTED
 
         this._amountAbleToBorrow = this._amountAbleToBorrow.add(loan.item.borrowingCost)
         if(this._amountAbleToBorrow.amount > this.maxBorrowingAmount.amount){
