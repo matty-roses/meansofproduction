@@ -1,4 +1,14 @@
 import { ThingStatus} from "./thingStatus";
+import { BorrowerVerificationFlags} from "./borrowerVerificationFlags";
+
+export class InsufficentBorrowerVerificationFlag extends Error{
+    public readonly flag: BorrowerVerificationFlags
+
+    constructor(flag: BorrowerVerificationFlags) {
+        super(`User does not have ${flag} but item requires it`)
+        this.flag = flag
+    }
+}
 
 export class InsufficientBorrowingCreditAvailableError extends Error{
     public readonly amountPresent: number

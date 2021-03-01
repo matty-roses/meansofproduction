@@ -5,11 +5,15 @@ import {Email} from "../valueItems/email";
 import {Thing} from "./thing";
 import {ThingStatus} from "../valueItems/thingStatus";
 import {Loan} from "./loan";
-import {InsufficientBorrowingCreditAvailableError, InvalidThingStatusToBorrow} from "../valueItems/exceptions";
+import {
+    InsufficientBorrowingCreditAvailableError, InvalidThingStatusToBorrow, InsufficentBorrowerVerificationFlag
+} from "../valueItems/exceptions";
 import {LoanStatus} from "../valueItems/loanStatus";
+import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
 
 export interface IBorrower {
     readonly amountAbleToBorrow: IBorrowCost;
+    readonly verificationFlags: BorrowerVerificationFlags[]
 
     borrow(item: Thing, until: Date): Loan;
     return(loan: Loan): Loan;
@@ -17,12 +21,15 @@ export interface IBorrower {
 
 export class Borrower extends Person implements IBorrower {
     public maxBorrowingAmount: IBorrowCost
+    public readonly verificationFlags: BorrowerVerificationFlags[]
     private _amountAbleToBorrow: IBorrowCost
 
-    constructor(id: string, name: PersonName, currentAmountToBorrow: IBorrowCost, maxBorrowingAmount: IBorrowCost, emails: Email[] = []) {
+    constructor(id: string, name: PersonName, currentAmountToBorrow: IBorrowCost, maxBorrowingAmount: IBorrowCost,
+                emails: Email[] = [], verificationFlags: BorrowerVerificationFlags[] = []) {
         super(id, name, emails)
         this._amountAbleToBorrow = currentAmountToBorrow
         this.maxBorrowingAmount = maxBorrowingAmount
+        this.verificationFlags = verificationFlags
     }
 
     return(loan: Loan, damaged: boolean = false): Loan {
@@ -40,6 +47,13 @@ export class Borrower extends Person implements IBorrower {
     }
 
     borrow(item: Thing, until: Date): Loan {
+        // do we have all the borrower verification required?
+        for(const flag of item.requiredBorrowerFlags) {
+            if(this.verificationFlags.indexOf(flag) < 0){
+                throw new InsufficentBorrowerVerificationFlag(flag)
+            }
+        }
+
         // do we have enough credit to do so?
         if (this.amountAbleToBorrow.amount < item.borrowingCost.amount) {
             throw new InsufficientBorrowingCreditAvailableError(this.amountAbleToBorrow.amount, item.borrowingCost.amount)
@@ -50,7 +64,7 @@ export class Borrower extends Person implements IBorrower {
             throw new InvalidThingStatusToBorrow(item.status)
         }
 
-        //we're good to borrow!
+        // we're good to borrow!
 
         // subtract the cost from what this person has available
         this._amountAbleToBorrow = this._amountAbleToBorrow.subtract(item.borrowingCost)
@@ -58,7 +72,7 @@ export class Borrower extends Person implements IBorrower {
         // change the item status
         item.status = ThingStatus.CURRENTLY_BORROWED
 
-        //return the loan
+        // return the loan
         // make the loan
         return new Loan(item, this, until)
     }

@@ -2,6 +2,8 @@ import {ThingStatus} from "../valueItems/thingStatus"
 import {Person} from "./person"
 import {IBorrowCost} from "../valueItems/borrowCost";
 import {Location} from "../valueItems/location";
+import {Money} from "../valueItems/money"
+import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
 
 export class Thing {
     public readonly id: string
@@ -12,6 +14,8 @@ export class Thing {
     public readonly imageUrls: string[]
     private _status: ThingStatus = ThingStatus.READY
     public readonly owner: Person | null = null
+    public readonly insuredAmount: Money | null = null
+    public readonly requiredBorrowerFlags: BorrowerVerificationFlags[]
 
     constructor(
         id: string,
@@ -22,6 +26,8 @@ export class Thing {
         description: string = "",
         imageUrls: string[] = [],
         owner: Person | null = null,
+        insuredAmount: Money | null,
+        requiredBorrowerFlags: BorrowerVerificationFlags[]
     ) {
         this.id = id
         this.name = name
@@ -31,6 +37,8 @@ export class Thing {
         this.owner = owner
         this.borrowingCost = cost
         this.storageLocation = storageLocation
+        this.insuredAmount = insuredAmount
+        this.requiredBorrowerFlags = requiredBorrowerFlags
     }
 
     public get status(): ThingStatus {
