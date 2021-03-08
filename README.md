@@ -8,6 +8,8 @@ A free as in beer application to manage a distributed library, especially a libr
 
 - Because control of the means of production is the material basis for everything
 
+- Because distributed tool libraries may be easier to setup, and not require tools to live in a central place!
+
 ## Parts
 - meansofproduction - domain objects that define the business logic and storage functions
 - graphql_server - GraphQL API to support the front end
