@@ -4,6 +4,7 @@ import {IBorrowCost} from "../valueItems/borrowCost";
 import {Location} from "../valueItems/location";
 import {Money} from "../valueItems/money"
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
+import {ILender} from "./lender";
 
 export class Thing {
     public readonly id: string
@@ -13,7 +14,7 @@ export class Thing {
     public readonly storageLocation: Location
     public readonly imageUrls: string[]
     private _status: ThingStatus = ThingStatus.READY
-    public readonly owner: Person | null = null
+    public readonly owner: ILender | null = null
     public readonly insuredAmount: Money | null = null
     public readonly requiredBorrowerFlags: BorrowerVerificationFlags[]
 
@@ -25,9 +26,9 @@ export class Thing {
         currentStatus: ThingStatus = ThingStatus.READY,
         description: string = "",
         imageUrls: string[] = [],
-        owner: Person | null = null,
+        owner: ILender | null = null,
         insuredAmount: Money | null,
-        requiredBorrowerFlags: BorrowerVerificationFlags[]
+        requiredBorrowerFlags: BorrowerVerificationFlags[] = []
     ) {
         this.id = id
         this.name = name

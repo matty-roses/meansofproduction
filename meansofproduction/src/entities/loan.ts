@@ -3,6 +3,7 @@ import {LoanStatus} from "../valueItems/loanStatus";
 import {ThingStatus} from "../valueItems/thingStatus";
 import {Borrower} from "./borrower";
 import {Location} from "../valueItems/location";
+import {ILender} from "./lender";
 
 export class Loan {
     public readonly item: Thing
@@ -25,7 +26,12 @@ export class Loan {
             this.returnLocation = item.storageLocation
         }
     }
-
+    public get lender(): ILender | null {
+        if(this.item.owner){
+            return this.item.owner
+        }
+        return null
+    }
     public get status(): LoanStatus{
         return this._status
     }

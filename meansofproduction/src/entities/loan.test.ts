@@ -1,5 +1,5 @@
-import { Loan } from "./loan"
-import { Thing } from "./thing"
+import {Loan} from "./loan"
+import {Thing} from "./thing"
 import {PersonName} from "../valueItems/personName"
 import {LoanStatus} from "../valueItems/loanStatus"
 import {ThingStatus} from "../valueItems/thingStatus"
@@ -13,7 +13,7 @@ describe("Loan", () => {
     it('should change item to damaged when returned damaged', () => {
         const cost = new NumericBorrowCost(1)
         const borrower = new Borrower("bob", new PersonName("Doug", "Jones"), cost, cost)
-        const thing = new Thing("test", "test", cost, loc)
+        const thing = new Thing("test", "test", cost, loc, ThingStatus.READY, "", [], null, null, [])
 
         const loan = new Loan(
             thing,
@@ -34,7 +34,7 @@ describe("Loan", () => {
     it('should change item to ready when loan is ready', () => {
         const cost = new NumericBorrowCost(1)
         const borrower = new Borrower("bob", new PersonName("Doug", "Jones"), cost, cost)
-        const thing = new Thing("test", "test", cost, loc)
+        const thing = new Thing("test", "test", cost, loc, ThingStatus.READY, "", [], null, null, [])
 
         const loan = new Loan(
             thing,

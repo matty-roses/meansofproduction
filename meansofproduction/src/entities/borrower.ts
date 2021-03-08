@@ -6,7 +6,9 @@ import {Thing} from "./thing";
 import {ThingStatus} from "../valueItems/thingStatus";
 import {Loan} from "./loan";
 import {
-    InsufficientBorrowingCreditAvailableError, InvalidThingStatusToBorrow, InsufficentBorrowerVerificationFlag
+    InsufficentBorrowerVerificationFlag,
+    InsufficientBorrowingCreditAvailableError,
+    InvalidThingStatusToBorrow
 } from "../valueItems/exceptions";
 import {LoanStatus} from "../valueItems/loanStatus";
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
@@ -32,12 +34,23 @@ export class Borrower extends Person implements IBorrower {
         this.verificationFlags = verificationFlags
     }
 
-    return(loan: Loan): Loan {
-        loan.status = LoanStatus.RETURN_STARTED
+    finishReturn(loan: Loan){
+        if(loan.status !== LoanStatus.RETURNED){
+            throw new Error("Only loans with a return_accepted status can be finished!")
+        }
 
         this._amountAbleToBorrow = this._amountAbleToBorrow.add(loan.item.borrowingCost)
-        if(this._amountAbleToBorrow.amount > this.maxBorrowingAmount.amount){
+        if (this._amountAbleToBorrow.amount > this.maxBorrowingAmount.amount) {
             this._amountAbleToBorrow = this.maxBorrowingAmount.clone()
+        }
+    }
+
+    return(loan: Loan): Loan {
+        if(loan.lender) {
+            loan.status = LoanStatus.RETURN_STARTED
+        } else {
+            loan.status = LoanStatus.RETURNED
+            this.finishReturn(loan)
         }
         return loan
     }
