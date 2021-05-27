@@ -4,7 +4,7 @@ import {IBorrowCost} from "../valueItems/borrowCost";
 import {Location} from "../valueItems/location";
 import {Money} from "../valueItems/money"
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
-import {ILender} from "./lender";
+import {ILender} from "./lenders/ILender";
 
 export class Thing {
     public readonly id: string
