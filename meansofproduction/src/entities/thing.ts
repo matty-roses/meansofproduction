@@ -1,5 +1,4 @@
 import {ThingStatus} from "../valueItems/thingStatus"
-import {Person} from "./person"
 import {IBorrowCost} from "../valueItems/borrowCost";
 import {Location} from "../valueItems/location";
 import {Money} from "../valueItems/money"
@@ -49,4 +48,5 @@ export class Thing {
     public set status(status: ThingStatus) {
         this._status = status
     }
+
 }

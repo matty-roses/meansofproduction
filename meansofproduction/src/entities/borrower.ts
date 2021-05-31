@@ -14,6 +14,7 @@ import {LoanStatus} from "../valueItems/loanStatus";
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
 
 export interface IBorrower {
+    readonly id: string
     readonly amountAbleToBorrow: IBorrowCost;
     readonly verificationFlags: BorrowerVerificationFlags[]
 
