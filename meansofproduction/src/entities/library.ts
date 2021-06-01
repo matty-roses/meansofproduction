@@ -1,7 +1,8 @@
 import {IBorrower} from "./borrower";
 import {Money} from "../valueItems/money";
 import {Thing} from "./thing";
-import {IUserRepository} from "../repositories/IUserRepository";
+import {IThingRepository} from "../repositories/thingRepository";
+import {ILender} from "./lenders/ILender";
 
 export interface ILibrary{
     readonly name: string
@@ -18,13 +19,20 @@ export class DistributedLibraryWithFees implements ILibrary{
     private readonly _name: string
     public readonly maxFees: Money
     private readonly _userIDsAndFees: Record<string, Money>
-    private readonly _userRepo: IUserRepository
+    private readonly _lenders: Record<string, ILender>
+    private readonly _thingRepository: IThingRepository;
 
-    constructor(name: string, maxFees: Money, userRepo: IUserRepository) {
+    constructor(name: string, maxFees: Money, lenders: Iterable<ILender>, thingRepository: IThingRepository) {
         this._name = name
         this.maxFees = maxFees
         this._userIDsAndFees = {}
-        this._userRepo = userRepo
+
+        this._lenders = {}
+        for (const lender of lenders){
+            this._lenders[lender.id] = lender
+        }
+
+        this._thingRepository = thingRepository
     }
 
     public get name(): string{
@@ -36,7 +44,8 @@ export class DistributedLibraryWithFees implements ILibrary{
     }
 
     public canBorrow(borrower: IBorrower): boolean {
-        if(!(borrower.id in this.getMembers())){
+        const ids = this.getMemberIds()
+        if(!(borrower.id in ids)){
             return false
         }
         if (borrower.id in this._userIDsAndFees){
@@ -53,12 +62,23 @@ export class DistributedLibraryWithFees implements ILibrary{
         return this._userIDsAndFees[borrower.id]
     }
 
-    getItems(): Iterable<Thing> {
-        return undefined;
+    getItems(): Thing[] {
+        const res = []
+        for (const key in this._lenders){
+            const lender = this._lenders[key]
+
+            const things = this._thingRepository.getThingsForLender(lender)
+
+            for (const thing of things) {
+                res.push(thing)
+            }
+        }
+
+        return res
     }
 
-    getMembers(): Iterable<IBorrower> {
-        return undefined;
+    public getMemberIds(): string[] {
+        return Object.keys(this._userIDsAndFees)
     }
 
     getPoints(borrower: IBorrower): number {
