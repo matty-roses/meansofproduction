@@ -35,5 +35,6 @@ A library might represent either a library organization, or a distributed group 
 
 Libraries will also be able to long term allow members from other libraries, presenting an easy way to offer a unified platform for existing lenders
 
-Libraries can enforce policies on behalf of their membership, such.  Long term integration with voting platforms can lead to democratization.
+Libraries can enforce policies on behalf of their membership, such as maximum items to borrow at one time, fees or points for non-returned items, etc.  
 
+Long term integration with voting platforms for libraries is a good move to ensure democratic control of libraries.
