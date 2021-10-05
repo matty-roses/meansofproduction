@@ -14,8 +14,11 @@ A free as in beer application to manage a distributed library, especially a libr
 
 ## Roles
 Borrowers - somebody who has a need and wishes to use an item to fulfill that need
+
 Lenders - somebody with an item to lend.
-Libraries - organizations which connect Borrowers and Lenders, and prevent abuses for the general good.  Depending on the type of library, a library may also be a lender.  Libraries create Loans of items, and also determine if Borrowers remain in good standing, if items are returned satisfactorily, etc.  
+
+Libraries - organizations which connect Borrowers and Lenders, and prevent abuses for the general good.  Depending on the type of library, a library may also be a lender.
+Libraries create Loans of items, and also determine if Borrowers remain in good standing, if items are returned satisfactorily, etc.  
 
 ## Parts
 - meansofproduction - domain objects that define the business logic and storage functions
