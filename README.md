@@ -9,7 +9,7 @@ A free as in beer application to manage a distributed library, especially a libr
 - Because control of the means of production is the material basis for everything
 
 - Because distributed tool libraries may be easier to setup, and not require tools to live in a central place!
-- 
+
 - Because Library Socialism is a great idea - if you'd like to know more, check out srslywrong's series on this (https://srslywrong.com/podcast/189-library-socialism-usufruct/).
 
 ## Roles
