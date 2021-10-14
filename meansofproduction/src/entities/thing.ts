@@ -1,10 +1,9 @@
 import {ThingStatus} from "../valueItems/thingStatus"
-import {Person} from "./person"
 import {IBorrowCost} from "../valueItems/borrowCost";
 import {Location} from "../valueItems/location";
 import {Money} from "../valueItems/money"
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
-import {ILender} from "./lender";
+import {ILender} from "./lenders/ILender";
 
 export class Thing {
     public readonly id: string
@@ -49,4 +48,5 @@ export class Thing {
     public set status(status: ThingStatus) {
         this._status = status
     }
+
 }

@@ -3,7 +3,7 @@ import {LoanStatus} from "../valueItems/loanStatus";
 import {ThingStatus} from "../valueItems/thingStatus";
 import {Borrower} from "./borrower";
 import {Location} from "../valueItems/location";
-import {ILender} from "./lender";
+import {ILender} from "./lenders/ILender";
 
 export class Loan {
     public readonly item: Thing

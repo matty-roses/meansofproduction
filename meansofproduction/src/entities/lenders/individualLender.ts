@@ -1,11 +1,7 @@
-import {Loan} from "./loan";
-import {Person} from "./person";
-import {LoanStatus} from "../valueItems/loanStatus";
-
-export interface ILender {
-    acceptReturn(loan: Loan): Loan;
-    markReturnAsDamaged(loan: Loan): Loan
-}
+import {Loan} from "../loan";
+import {Person} from "../person";
+import {LoanStatus} from "../../valueItems/loanStatus";
+import {ILender} from "./ILender";
 
 export class IndividualLender extends Person implements ILender{
     acceptReturn(loan: Loan): Loan {

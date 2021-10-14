@@ -1,7 +1,7 @@
 import {IBorrowCost} from "../valueItems/borrowCost";
 import {PersonName} from "../valueItems/personName";
 import {Person} from "./person";
-import {Email} from "../valueItems/email";
+import {EmailAddress} from "../valueItems/emailAddress";
 import {Thing} from "./thing";
 import {ThingStatus} from "../valueItems/thingStatus";
 import {Loan} from "./loan";
@@ -14,6 +14,7 @@ import {LoanStatus} from "../valueItems/loanStatus";
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
 
 export interface IBorrower {
+    readonly id: string
     readonly amountAbleToBorrow: IBorrowCost;
     readonly verificationFlags: BorrowerVerificationFlags[]
 
@@ -27,7 +28,7 @@ export class Borrower extends Person implements IBorrower {
     private _amountAbleToBorrow: IBorrowCost
 
     constructor(id: string, name: PersonName, currentAmountToBorrow: IBorrowCost, maxBorrowingAmount: IBorrowCost,
-                emails: Email[] = [], verificationFlags: BorrowerVerificationFlags[] = []) {
+                emails: EmailAddress[] = [], verificationFlags: BorrowerVerificationFlags[] = []) {
         super(id, name, emails)
         this._amountAbleToBorrow = currentAmountToBorrow
         this.maxBorrowingAmount = maxBorrowingAmount
