@@ -52,4 +52,6 @@ Libraries can enforce policies on behalf of their membership, such as maximum it
 
 Long term integration with voting platforms for libraries is a good move to ensure democratic control of libraries.
 
+Libraries can optionally take Donations, which transfers the location to a library.
+
 Libraries create Loans of Items.
