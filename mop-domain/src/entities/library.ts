@@ -5,6 +5,12 @@ import {IThingRepository} from "../repositories/thingRepository";
 import {ILender} from "./lenders/ILender";
 import {ILoan, Loan} from "./loan";
 import {Person} from "./person";
+import {
+    InsufficentBorrowerVerificationFlag,
+    InsufficientBorrowingCreditAvailableError,
+    InvalidThingStatusToBorrow
+} from "../valueItems/exceptions";
+import {ThingStatus} from "../valueItems/thingStatus";
 
 export interface ILibrary{
     readonly name: string
@@ -14,7 +20,7 @@ export interface ILibrary{
     canBorrow(borrower: IBorrower): boolean
     getFeesOwned(borrower: IBorrower): Money
     getPoints(borrower: IBorrower): number
-    borrow(item: Thing, until: Date): Loan
+    borrow(item: Thing, until: Date, borrower: IBorrower): Loan
     return(loan: Loan): Loan
 }
 
@@ -86,5 +92,37 @@ export class DistributedLibraryWithFees implements ILibrary{
 
     getPoints(borrower: IBorrower): number {
         return 0;
+    }
+
+
+    public borrow(item: Thing, until: Date, borrower: IBorrower): Loan {
+        // do we have all the borrower verification required?
+        for(const flag of item.requiredBorrowerFlags) {
+            if(borrower.verificationFlags.indexOf(flag) < 0){
+                throw new InsufficentBorrowerVerificationFlag(flag)
+            }
+        }
+
+        // do we have enough credit to do so?
+        if (borrower.amountAbleToBorrow.amount < item.borrowingCost.amount) {
+            throw new InsufficientBorrowingCreditAvailableError(borrower.amountAbleToBorrow.amount, item.borrowingCost.amount)
+        }
+
+        // is the object available?
+        if(item.status !== ThingStatus.READY){
+            throw new InvalidThingStatusToBorrow(item.status)
+        }
+
+        // we're good to borrow!
+
+        // subtract the cost from what this person has available
+        this._amountAbleToBorrow = this._amountAbleToBorrow.subtract(item.borrowingCost)
+
+        // change the item status
+        item.status = ThingStatus.CURRENTLY_BORROWED
+
+        // return the loan
+        // make the loan
+        return new Loan(item, this, until)
     }
 }

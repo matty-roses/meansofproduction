@@ -16,7 +16,9 @@ import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags
 export interface IBorrower {
     readonly id: string
     readonly amountAbleToBorrow: IBorrowCost;
-    readonly verificationFlags: BorrowerVerificationFlags;
+    readonly verificationFlags: BorrowerVerificationFlags[];
+    markAmountBorrowed(cost: IBorrowCost): void;
+    markAmountReturnd(cost: IBorrowCost): void;
 }
 
 export class Borrower extends Person implements IBorrower {
@@ -55,36 +57,5 @@ export class Borrower extends Person implements IBorrower {
 
     get amountAbleToBorrow(): IBorrowCost {
         return this._amountAbleToBorrow
-    }
-
-    borrow(item: Thing, until: Date): Loan {
-        // do we have all the borrower verification required?
-        for(const flag of item.requiredBorrowerFlags) {
-            if(this.verificationFlags.indexOf(flag) < 0){
-                throw new InsufficentBorrowerVerificationFlag(flag)
-            }
-        }
-
-        // do we have enough credit to do so?
-        if (this.amountAbleToBorrow.amount < item.borrowingCost.amount) {
-            throw new InsufficientBorrowingCreditAvailableError(this.amountAbleToBorrow.amount, item.borrowingCost.amount)
-        }
-
-        // is the object available?
-        if(item.status !== ThingStatus.READY){
-            throw new InvalidThingStatusToBorrow(item.status)
-        }
-
-        // we're good to borrow!
-
-        // subtract the cost from what this person has available
-        this._amountAbleToBorrow = this._amountAbleToBorrow.subtract(item.borrowingCost)
-
-        // change the item status
-        item.status = ThingStatus.CURRENTLY_BORROWED
-
-        // return the loan
-        // make the loan
-        return new Loan(item, this, until)
     }
 }
