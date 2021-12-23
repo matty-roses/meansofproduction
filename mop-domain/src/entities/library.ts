@@ -3,16 +3,19 @@ import {Money} from "../valueItems/money";
 import {Thing} from "./thing";
 import {IThingRepository} from "../repositories/thingRepository";
 import {ILender} from "./lenders/ILender";
+import {ILoan, Loan} from "./loan";
+import {Person} from "./person";
 
 export interface ILibrary{
     readonly name: string
     readonly chargesFees: boolean
+    readonly members: Iterable<IBorrower>
+    readonly availableItems: Iterable<Thing>
     canBorrow(borrower: IBorrower): boolean
     getFeesOwned(borrower: IBorrower): Money
     getPoints(borrower: IBorrower): number
-
-    getMembers(): Iterable<IBorrower>
-    getItems(): Iterable<Thing>
+    borrow(item: Thing, until: Date): Loan
+    return(loan: Loan): Loan
 }
 
 export class DistributedLibraryWithFees implements ILibrary{

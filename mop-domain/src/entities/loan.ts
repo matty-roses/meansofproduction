@@ -5,7 +5,14 @@ import {Borrower} from "./borrower";
 import {Location} from "../valueItems/location";
 import {ILender} from "./lenders/ILender";
 
-export class Loan {
+export interface ILoan{
+    readonly item: Thing
+    readonly borrower: Borrower
+    readonly dueDate: Date
+    readonly returnLocation: Location
+}
+
+export class Loan implements ILoan{
     public readonly item: Thing
     public readonly borrower: Borrower
     public readonly dueDate: Date

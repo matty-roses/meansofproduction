@@ -16,10 +16,7 @@ import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags
 export interface IBorrower {
     readonly id: string
     readonly amountAbleToBorrow: IBorrowCost;
-    readonly verificationFlags: BorrowerVerificationFlags[]
-
-    borrow(item: Thing, until: Date): Loan;
-    return(loan: Loan): Loan;
+    readonly verificationFlags: BorrowerVerificationFlags;
 }
 
 export class Borrower extends Person implements IBorrower {
