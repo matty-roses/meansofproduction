@@ -5,6 +5,5 @@ module.exports = {
     roots: [
         "mop-domain",
         "mop-graphql-api",
-        "mop-webclient"
     ]
 };
