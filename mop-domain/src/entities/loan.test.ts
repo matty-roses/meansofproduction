@@ -29,9 +29,7 @@ describe("Loan", () => {
         expect(loan.item.status).toEqual(ThingStatus.DAMAGED)
         expect(loan.status).toEqual(LoanStatus.RETURNED_DAMAGED)
     })
-})
 
-describe("Loan", () => {
     it('should change item to ready when loan is ready', () => {
         const borrower = new Borrower("bob", new PersonName("Doug", "Jones"))
         const thing = new Thing("test", "test", loc, new NoCost(), ThingStatus.READY, "", [], null, null, [])
