@@ -7,7 +7,6 @@ import {Borrower} from "./borrower";
 import {Loan} from "./loan";
 import {LoanStatus} from "../valueItems/loanStatus";
 import {Location} from "../valueItems/location";
-import {consoleTestResultsHandler} from "tslint/lib/test";
 
 const loc =  new Location(40.6501, -73.94958)
 
