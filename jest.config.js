@@ -3,6 +3,6 @@ module.exports = {
         '^.+\\.ts?$': 'ts-jest',
     },
     roots: [
-        "mop-domain"
+        "domain"
     ]
 };
