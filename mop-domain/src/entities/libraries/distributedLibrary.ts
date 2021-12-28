@@ -6,6 +6,7 @@ import {ILoan, Loan} from "../loan";
 import {ILibrary} from "./ILibrary";
 import {LoanStatus} from "../../valueItems/loanStatus";
 import {IndividualDistributedLender} from "../lenders/individualDistributedLender";
+import {InvalidThingStatusToBorrow} from "../../valueItems/exceptions";
 
 export class DistributedLibrary implements ILibrary {
     private readonly _name: string
@@ -25,10 +26,6 @@ export class DistributedLibrary implements ILibrary {
 
     public get name(): string {
         return this._name
-    }
-
-    public get chargesFees(): boolean {
-        return true
     }
 
     public canBorrow(borrower: IBorrower): boolean {
@@ -75,6 +72,9 @@ export class DistributedLibrary implements ILibrary {
     }
 
     borrow(item: IThing, borrower: IBorrower, until: Date): ILoan {
+        if (item.status === ThingStatus.DAMAGED) {
+            throw new InvalidThingStatusToBorrow(item.status)
+        }
         // get the lender for this item
         const lender = this.getOwnerOfItem(item)
         if (!lender){

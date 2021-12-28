@@ -22,7 +22,6 @@ export class Loan implements ILoan{
     public readonly item: IThing
     public readonly borrower: IBorrower
     public readonly dueDate: Date
-    private _active: boolean = true
     private _dateReturned: Date | undefined
     private _status: LoanStatus
     public readonly returnLocation: Location
@@ -32,7 +31,6 @@ export class Loan implements ILoan{
         this.id = id
         this.item = item
         this.borrower = borrower
-        this._active = true
         this.dueDate = dueDate
         this._status = status
         if(returnLocation){
@@ -50,10 +48,7 @@ export class Loan implements ILoan{
     }
 
     public get active(): boolean {
-        return this._active
-    }
-    public set active(val: boolean){
-        this._active = val
+        return this._status === LoanStatus.LOANED
     }
     public get dateReturned(): Date | undefined{
         return this._dateReturned
@@ -64,6 +59,7 @@ export class Loan implements ILoan{
 
     public startReturn() {
         this.lender?.startReturn(this)
+        this._status = LoanStatus.RETURN_STARTED
         this._dateReturned = new Date()
     }
 
