@@ -1,1 +1,0 @@
-{"version":3,"file":"money.js","sourceRoot":"./meansofproduction/","sources":["../mop-domain/src/valueItems/money.ts"],"names":[],"mappings":";;;AAAA,MAAa,KAAK;IACE,MAAM,CAAQ;IAE9B,YAAY,MAAc;QACtB,IAAI,CAAC,MAAM,GAAG,MAAM,CAAA;IACxB,CAAC;IAED,MAAM,KAAK,IAAI;QACX,OAAO,IAAI,KAAK,CAAC,CAAC,CAAC,CAAA;IACvB,CAAC;CACJ;AAVD,sBAUC"}

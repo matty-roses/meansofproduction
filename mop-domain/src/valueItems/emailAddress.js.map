@@ -1,1 +1,0 @@
-{"version":3,"file":"emailAddress.js","sourceRoot":"./meansofproduction/","sources":["../mop-domain/src/valueItems/emailAddress.ts"],"names":[],"mappings":";;;AAAA,MAAa,YAAY;IACL,KAAK,CAAS;IAC9B,YAAmB,KAAa;QAC5B,IAAI,CAAC,KAAK,GAAG,KAAK,CAAA;IACtB,CAAC;CACJ;AALD,oCAKC"}
