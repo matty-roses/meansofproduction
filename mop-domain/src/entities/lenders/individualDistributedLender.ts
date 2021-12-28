@@ -11,10 +11,12 @@ Class to represent the lenders in a distributed library
  */
 export class IndividualDistributedLender extends Person implements ILender{
     private readonly _items: Iterable<IThing>
+    private readonly _returnLocationOverride: Location | undefined
 
-    constructor(id: string, name: PersonName, emails: EmailAddress[] = [], items: Iterable<IThing>){
+    constructor(id: string, name: PersonName, emails: EmailAddress[] = [], items: Iterable<IThing>, returnLocationOverride?: Location){
         super(id, name, emails)
         this._items = items
+        this._returnLocationOverride = returnLocationOverride
     }
 
     startReturn(loan: ILoan): ILoan{
@@ -30,4 +32,8 @@ export class IndividualDistributedLender extends Person implements ILender{
         return this._items
     }
 
+    preferredReturnLocation(item: IThing): Location{
+        if (this._returnLocationOverride){ return this._returnLocationOverride}
+        return item.storageLocation
+    }
 }

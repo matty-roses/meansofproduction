@@ -4,8 +4,6 @@ import {ILoan} from "../loan";
 
 export interface ILibrary {
     readonly name: string
-    readonly chargesFees: boolean
-    readonly borrowers: Iterable<IBorrower>
     readonly availableItems: Iterable<IThing>
     readonly allItems: Iterable<IThing>
 

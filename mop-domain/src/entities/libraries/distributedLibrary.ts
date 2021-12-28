@@ -72,9 +72,8 @@ export class DistributedLibrary implements ILibrary {
             borrower,
             until,
             LoanStatus.LOANED,
-            lender.
+            lender.preferredReturnLocation(item)
         )
-        return undefined;
     }
 
     return(loan: ILoan): ILoan {
