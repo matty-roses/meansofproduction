@@ -4,6 +4,7 @@ import {Location} from "../valueItems/location";
 import {Money} from "../valueItems/money"
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
 import {ILender} from "./lenders/ILender";
+import {NoCost} from "../valueItems/noCost";
 
 export interface IThing {
     id: string;
@@ -22,7 +23,7 @@ export class Thing implements IThing {
     readonly id: string
     readonly name: string
     readonly description: string
-    readonly borrowingCost: IBorrowCost
+    readonly borrowingCost: IBorrowCost = new NoCost()
     readonly storageLocation: Location
     readonly imageUrls: string[]
     private _status: ThingStatus = ThingStatus.READY
@@ -33,8 +34,8 @@ export class Thing implements IThing {
     constructor(
         id: string,
         name: string,
-        cost: IBorrowCost,
         storageLocation: Location,
+        cost: IBorrowCost,
         currentStatus: ThingStatus = ThingStatus.READY,
         description: string = "",
         imageUrls: string[] = [],

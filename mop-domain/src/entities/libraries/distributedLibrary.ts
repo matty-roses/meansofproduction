@@ -59,15 +59,29 @@ export class DistributedLibrary implements ILibrary {
         return res
     }
 
-    private getOwnerOfItem(item: IThing): IndividualDistributedLender{
+    private getOwnerOfItem(item: IThing): IndividualDistributedLender| null {
+        for (const lender of this._lenders){
+            for (const lenderItem of lender.items){
+                if (item.id === lenderItem.id){
+                    return lender
+                }
+            }
+        }
         return null
+    }
+
+    private makeLoanId(): string{
+        return "guid"
     }
 
     borrow(item: IThing, borrower: IBorrower, until: Date): ILoan {
         // get the lender for this item
         const lender = this.getOwnerOfItem(item)
-
+        if (!lender){
+            throw new Error(`Cannot find owner of item ${item.id}`)
+        }
         return new Loan(
+            this.makeLoanId(),
             item,
             borrower,
             until,
