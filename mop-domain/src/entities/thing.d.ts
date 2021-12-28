@@ -4,7 +4,7 @@ import { Location } from "../valueItems/location";
 import { Money } from "../valueItems/money";
 import { BorrowerVerificationFlags } from "../valueItems/borrowerVerificationFlags";
 import { ILender } from "./lenders/ILender";
-interface IThing {
+export interface IThing {
     id: string;
     name: string;
     description: string;
@@ -27,8 +27,8 @@ export declare class Thing implements IThing {
     readonly owner: ILender | null;
     readonly insuredAmount: Money | null;
     readonly requiredBorrowerFlags: BorrowerVerificationFlags[];
-    constructor(id: string, name: string, cost: IBorrowCost, storageLocation: Location, currentStatus: ThingStatus | undefined, description: string | undefined, imageUrls: string[] | undefined, owner: ILender | null | undefined, insuredAmount: Money | null, requiredBorrowerFlags?: BorrowerVerificationFlags[]);
+    constructor(id: string, name: string, storageLocation: Location, cost: IBorrowCost, currentStatus: ThingStatus | undefined, description: string | undefined, imageUrls: string[] | undefined, owner: ILender | null | undefined, insuredAmount: Money | null, requiredBorrowerFlags?: BorrowerVerificationFlags[]);
     get status(): ThingStatus;
     set status(status: ThingStatus);
 }
-export {};
+//# sourceMappingURL=thing.d.ts.map

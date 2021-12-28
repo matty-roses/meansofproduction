@@ -4,3 +4,4 @@ export declare class PersonName {
     readonly lastName: string;
     constructor(firstName: string, lastName: string, middleName?: string);
 }
+//# sourceMappingURL=personName.d.ts.map

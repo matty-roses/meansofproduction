@@ -7,3 +7,4 @@ export declare enum LoanStatus {
     RETURNED_DAMAGED = 5,
     RETURNED = 6
 }
+//# sourceMappingURL=loanStatus.d.ts.map

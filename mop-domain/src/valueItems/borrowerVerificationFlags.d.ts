@@ -5,3 +5,4 @@ export declare enum BorrowerVerificationFlags {
     CURRENT_ADDRESS_VERIFIED = 3,
     ITEM_RFID_CHIP = 4
 }
+//# sourceMappingURL=borrowerVerificationFlags.d.ts.map

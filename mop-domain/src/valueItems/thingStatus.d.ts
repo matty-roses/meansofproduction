@@ -5,3 +5,4 @@ export declare enum ThingStatus {
     DESTROYED = 3,
     CURRENTLY_BORROWED = 4
 }
+//# sourceMappingURL=thingStatus.d.ts.map

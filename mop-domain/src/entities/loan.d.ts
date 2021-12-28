@@ -1,25 +1,35 @@
-import { Thing } from "./thing";
+import { IThing } from "./thing";
 import { LoanStatus } from "../valueItems/loanStatus";
-import { Borrower } from "./borrower";
+import { IBorrower } from "./borrower";
 import { Location } from "../valueItems/location";
 import { ILender } from "./lenders/ILender";
 export interface ILoan {
-    readonly item: Thing;
-    readonly borrower: Borrower;
+    readonly id: string;
+    readonly item: IThing;
+    readonly borrower: IBorrower;
     readonly dueDate: Date;
+    readonly dateReturned: Date | undefined;
     readonly returnLocation: Location;
+    readonly active: boolean;
+    startReturn(): void;
+    markItemDamaged(): void;
 }
 export declare class Loan implements ILoan {
-    readonly item: Thing;
-    readonly borrower: Borrower;
+    readonly id: string;
+    readonly item: IThing;
+    readonly borrower: IBorrower;
     readonly dueDate: Date;
     private _active;
+    private _dateReturned;
     private _status;
     readonly returnLocation: Location;
-    constructor(item: Thing, borrower: Borrower, dueDate: Date, status?: LoanStatus, returnLocation?: Location | null);
+    constructor(id: string, item: IThing, borrower: IBorrower, dueDate: Date, status?: LoanStatus, returnLocation?: Location | null, dateReturned?: Date);
     get lender(): ILender | null;
-    get status(): LoanStatus;
-    set status(status: LoanStatus);
     get active(): boolean;
     set active(val: boolean);
+    get dateReturned(): Date | undefined;
+    get status(): LoanStatus;
+    startReturn(): void;
+    markItemDamaged(): void;
 }
+//# sourceMappingURL=loan.d.ts.map

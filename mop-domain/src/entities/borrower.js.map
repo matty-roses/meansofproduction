@@ -1,1 +1,0 @@
-{"version":3,"file":"borrower.js","sourceRoot":"./","sources":["../mop-domain/src/entities/borrower.ts"],"names":[],"mappings":";;;AACA,qCAAgC;AAShC,MAAa,QAAS,SAAQ,eAAM;IAChB,iBAAiB,CAA6B;IAE9D,YAAY,EAAU,EAAE,IAAgB,EAC5B,SAAyB,EAAE,EAAE,oBAAiD,EAAE;QACxF,KAAK,CAAC,EAAE,EAAE,IAAI,EAAE,MAAM,CAAC,CAAA;QACvB,IAAI,CAAC,iBAAiB,GAAG,iBAAiB,CAAA;IAC9C,CAAC;CACJ;AARD,4BAQC"}

@@ -10,3 +10,4 @@ export declare class Borrower extends Person implements IBorrower {
     readonly verificationFlags: BorrowerVerificationFlags[];
     constructor(id: string, name: PersonName, emails?: EmailAddress[], verificationFlags?: BorrowerVerificationFlags[]);
 }
+//# sourceMappingURL=borrower.d.ts.map

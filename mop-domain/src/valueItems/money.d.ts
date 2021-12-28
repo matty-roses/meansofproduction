@@ -3,3 +3,4 @@ export declare class Money {
     constructor(amount: number);
     static get None(): Money;
 }
+//# sourceMappingURL=money.d.ts.map
