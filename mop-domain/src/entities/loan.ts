@@ -1,26 +1,28 @@
-import {Thing} from "./thing";
+import {IThing} from "./thing";
 import {LoanStatus} from "../valueItems/loanStatus";
 import {ThingStatus} from "../valueItems/thingStatus";
-import {Borrower} from "./borrower";
+import {IBorrower} from "./borrower";
 import {Location} from "../valueItems/location";
 import {ILender} from "./lenders/ILender";
 
 export interface ILoan{
-    readonly item: Thing
-    readonly borrower: Borrower
+    readonly item: IThing
+    readonly borrower: IBorrower
     readonly dueDate: Date
     readonly returnLocation: Location
+    readonly active: boolean
+    startReturn(): void
 }
 
 export class Loan implements ILoan{
-    public readonly item: Thing
-    public readonly borrower: Borrower
+    public readonly item: IThing
+    public readonly borrower: IBorrower
     public readonly dueDate: Date
     private _active: boolean = true
     private _status: LoanStatus = LoanStatus.LOANED
     public readonly returnLocation: Location
 
-    public constructor(item: Thing, borrower: Borrower, dueDate: Date, status: LoanStatus = LoanStatus.LOANED,
+    public constructor(item: IThing, borrower: IBorrower, dueDate: Date, status: LoanStatus = LoanStatus.LOANED,
                        returnLocation: Location | null = null) {
         this.item = item
         this.borrower = borrower
@@ -62,4 +64,7 @@ export class Loan implements ILoan{
         this._active = val
     }
 
+    public startReturn() {
+        this.lender?.startReturn(this)
+    }
 }

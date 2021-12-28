@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const borrowCost_1 = require("../valueItems/borrowCost");
-const personName_1 = require("../valueItems/personName");
-const thing_1 = require("./thing");
-const thingStatus_1 = require("../valueItems/thingStatus");
-const exceptions_1 = require("../valueItems/exceptions");
-const borrower_1 = require("./borrower");
-const loan_1 = require("./loan");
-const loanStatus_1 = require("../valueItems/loanStatus");
-const location_1 = require("../valueItems/location");
+const borrowCost_1 = require("../../valueItems/borrowCost");
+const personName_1 = require("../../valueItems/personName");
+const thing_1 = require("../thing");
+const thingStatus_1 = require("../../valueItems/thingStatus");
+const exceptions_1 = require("../../valueItems/exceptions");
+const borrower_1 = require("../borrower");
+const loan_1 = require("../loan");
+const loanStatus_1 = require("../../valueItems/loanStatus");
+const location_1 = require("../../valueItems/location");
 const loc = new location_1.Location(40.6501, -73.94958);
 describe("Borrower", () => {
     it("should fail to loan if not enough credit", () => {
@@ -68,4 +68,4 @@ describe("Borrower", () => {
         const loan = new loan_1.Loan(thing, borrower, new Date());
     });
 });
-//# sourceMappingURL=library.test.js.map
+//# sourceMappingURL=distributedLibrary.test.js.map
