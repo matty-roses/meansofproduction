@@ -3,40 +3,39 @@ import {Thing} from "./thing"
 import {PersonName} from "../valueItems/personName"
 import {LoanStatus} from "../valueItems/loanStatus"
 import {ThingStatus} from "../valueItems/thingStatus"
-import {NumericBorrowCost} from "../valueItems/borrowCost";
 import {Borrower} from "./borrower";
 import {Location} from "../valueItems/location"
+import {NoCost} from "../valueItems/noCost";
 
 const loc = new Location(40.6501, -73.94958)
 
 describe("Loan", () => {
     it('should change item to damaged when returned damaged', () => {
-        const cost = new NumericBorrowCost(1)
-        const borrower = new Borrower("bob", new PersonName("Doug", "Jones"), cost, cost)
-        const thing = new Thing("test", "test", cost, loc, ThingStatus.READY, "", [], null, null, [])
+        const borrower = new Borrower("bob", new PersonName("Doug", "Jones"))
+        const thing = new Thing("test", "test", loc, new NoCost(), ThingStatus.READY, "", [], null, null, [])
 
         const loan = new Loan(
+            "loanId",
             thing,
             borrower,
             new Date(2020,12,23)
         )
 
         expect(loan.active).toEqual(true)
+
         // act
-        loan.status = LoanStatus.RETURNED_DAMAGED
+        loan.markItemDamaged()
 
         expect(loan.item.status).toEqual(ThingStatus.DAMAGED)
         expect(loan.status).toEqual(LoanStatus.RETURNED_DAMAGED)
     })
-})
 
-describe("Loan", () => {
     it('should change item to ready when loan is ready', () => {
-        const cost = new NumericBorrowCost(1)
-        const borrower = new Borrower("bob", new PersonName("Doug", "Jones"), cost, cost)
-        const thing = new Thing("test", "test", cost, loc, ThingStatus.READY, "", [], null, null, [])
+        const borrower = new Borrower("bob", new PersonName("Doug", "Jones"))
+        const thing = new Thing("test", "test", loc, new NoCost(), ThingStatus.READY, "", [], null, null, [])
 
         const loan = new Loan(
+            "testId",
             thing,
             borrower,
             new Date(2020,12,23)
@@ -45,10 +44,10 @@ describe("Loan", () => {
         expect(loan.active).toEqual(true)
 
         // act
-        loan.status = LoanStatus.RETURNED
+        loan.startReturn()
 
         expect(loan.item.status).toEqual(ThingStatus.READY)
-        expect(loan.status).toEqual(LoanStatus.RETURNED)
+        expect(loan.status).toEqual(LoanStatus.RETURN_STARTED)
         expect(loan.active).toEqual(false)
     })
 })

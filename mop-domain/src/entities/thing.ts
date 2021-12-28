@@ -4,24 +4,38 @@ import {Location} from "../valueItems/location";
 import {Money} from "../valueItems/money"
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
 import {ILender} from "./lenders/ILender";
+import {NoCost} from "../valueItems/noCost";
 
-export class Thing {
-    public readonly id: string
-    public readonly name: string
-    public readonly description: string
-    public readonly borrowingCost: IBorrowCost
-    public readonly storageLocation: Location
-    public readonly imageUrls: string[]
+export interface IThing {
+    id: string;
+    name: string;
+    description: string;
+    borrowingCost: IBorrowCost;
+    storageLocation: Location;
+    imageUrls: string[];
+    owner: ILender | null;
+    insuredAmount: Money | null;
+    requiredBorrowerFlags: BorrowerVerificationFlags[];
+    status: ThingStatus;
+}
+
+export class Thing implements IThing {
+    readonly id: string
+    readonly name: string
+    readonly description: string
+    readonly borrowingCost: IBorrowCost = new NoCost()
+    readonly storageLocation: Location
+    readonly imageUrls: string[]
     private _status: ThingStatus = ThingStatus.READY
-    public readonly owner: ILender | null = null
-    public readonly insuredAmount: Money | null = null
-    public readonly requiredBorrowerFlags: BorrowerVerificationFlags[]
+    readonly owner: ILender | null = null
+    readonly insuredAmount: Money | null = null
+    readonly requiredBorrowerFlags: BorrowerVerificationFlags[]
 
     constructor(
         id: string,
         name: string,
-        cost: IBorrowCost,
         storageLocation: Location,
+        cost: IBorrowCost,
         currentStatus: ThingStatus = ThingStatus.READY,
         description: string = "",
         imageUrls: string[] = [],
@@ -41,7 +55,7 @@ export class Thing {
         this.requiredBorrowerFlags = requiredBorrowerFlags
     }
 
-    public get status(): ThingStatus {
+    get status(): ThingStatus {
         return this._status
     }
 

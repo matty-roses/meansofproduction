@@ -1,17 +1,10 @@
 {
-  "name": "meansofproduction",
-  "version": "0.1.0",
-  "description": "Main domain library for means of production website, a free management tool for a distributed thing library",
-  "main": "index.js",
-  "scripts": {
-    "test": "../node_modules/.bin/jest --coverage",
-    "build": "../node_modules/.bin/tsc"
-  },
-  "author": "Matty Roses",
-  "repository": {
-    "url": ""
-  },
-  "license": "GPL-3.0-or-later",
+  "name": "means-of-production",
+  "workspaces": [
+    "mop-domain",
+    "mop-graphql-api",
+    "mop-webclient"
+  ],
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
     "@types/jest": "^26.0.19",

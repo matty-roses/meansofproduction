@@ -1,30 +1,36 @@
-import {Thing} from "./thing";
+import {IThing} from "./thing";
 import {LoanStatus} from "../valueItems/loanStatus";
-import {ThingStatus} from "../valueItems/thingStatus";
-import {Borrower} from "./borrower";
+import {IBorrower} from "./borrower";
 import {Location} from "../valueItems/location";
 import {ILender} from "./lenders/ILender";
+import {ThingStatus} from "../valueItems/thingStatus";
 
 export interface ILoan{
-    readonly item: Thing
-    readonly borrower: Borrower
+    readonly id: string
+    readonly item: IThing
+    readonly borrower: IBorrower
     readonly dueDate: Date
+    readonly dateReturned: Date | undefined
     readonly returnLocation: Location
+    readonly active: boolean
+    startReturn(): void
+    markItemDamaged(): void
 }
 
 export class Loan implements ILoan{
-    public readonly item: Thing
-    public readonly borrower: Borrower
+    public readonly id: string
+    public readonly item: IThing
+    public readonly borrower: IBorrower
     public readonly dueDate: Date
-    private _active: boolean = true
-    private _status: LoanStatus = LoanStatus.LOANED
+    private _dateReturned: Date | undefined
+    private _status: LoanStatus
     public readonly returnLocation: Location
 
-    public constructor(item: Thing, borrower: Borrower, dueDate: Date, status: LoanStatus = LoanStatus.LOANED,
-                       returnLocation: Location | null = null) {
+    public constructor(id: string, item: IThing, borrower: IBorrower, dueDate: Date, status: LoanStatus = LoanStatus.LOANED,
+                       returnLocation: Location | null = null, dateReturned?: Date) {
+        this.id = id
         this.item = item
         this.borrower = borrower
-        this._active = true
         this.dueDate = dueDate
         this._status = status
         if(returnLocation){
@@ -32,6 +38,7 @@ export class Loan implements ILoan{
         } else {
             this.returnLocation = item.storageLocation
         }
+        this._dateReturned = dateReturned
     }
     public get lender(): ILender | null {
         if(this.item.owner){
@@ -39,27 +46,26 @@ export class Loan implements ILoan{
         }
         return null
     }
-    public get status(): LoanStatus{
+
+    public get active(): boolean {
+        return this._status === LoanStatus.LOANED
+    }
+    public get dateReturned(): Date | undefined{
+        return this._dateReturned
+    }
+    public get status(): LoanStatus {
         return this._status
     }
 
-    public set status(status: LoanStatus) {
-        this._status = status
-        if(status === LoanStatus.RETURNED) {
-            this.item.status = ThingStatus.READY
-            this.active = false
-        }
-        if(status === LoanStatus.RETURNED_DAMAGED){
-            this.item.status = ThingStatus.DAMAGED
-            this.active = false
-        }
+    public startReturn() {
+        this.lender?.startReturn(this)
+        this._status = LoanStatus.RETURN_STARTED
+        this._dateReturned = new Date()
     }
 
-    public get active(): boolean {
-        return this._active
+    public markItemDamaged() {
+        this.lender?.finishReturn(this)
+        this._status = LoanStatus.RETURNED_DAMAGED
+        this.item.status = ThingStatus.DAMAGED
     }
-    public set active(val: boolean){
-        this._active = val
-    }
-
 }

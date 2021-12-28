@@ -104,3 +104,6 @@ dist
 .tern-port
 
 .idea/
+
+mop-domain/*.js
+mop-domain/*.js.map

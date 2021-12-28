@@ -1,8 +1,9 @@
-import {Loan} from "../loan";
+import {ILoan} from "../loan";
+import {IThing} from "../thing"
 
 export interface ILender {
     readonly id: string
-    acceptReturn(loan: Loan): Loan;
-
-    markReturnAsDamaged(loan: Loan): Loan
+    readonly items: Iterable<IThing>
+    startReturn(loan: ILoan): ILoan
+    finishReturn(loan: ILoan): ILoan
 }
