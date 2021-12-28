@@ -13,4 +13,3 @@ export declare class InvalidThingStatusToBorrow extends Error {
     readonly status: ThingStatus;
     constructor(status: ThingStatus);
 }
-//# sourceMappingURL=exceptions.d.ts.map

@@ -6,4 +6,3 @@ export interface ILender {
     startReturn(loan: ILoan): ILoan;
     finishReturn(loan: ILoan): ILoan;
 }
-//# sourceMappingURL=ILender.d.ts.map

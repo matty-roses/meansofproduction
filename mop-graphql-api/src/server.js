@@ -1,6 +1,8 @@
-import { ApolloServer, gql } from "apollo-server";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const apollo_server_1 = require("apollo-server");
 // todo move this to the graphql file
-const typeDefs = gql `
+const typeDefs = (0, apollo_server_1.gql) `
     scalar DateTime
     
     type Email {
@@ -63,7 +65,7 @@ const typeDefs = gql `
 const resolvers = {
     Query: {}
 };
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new apollo_server_1.ApolloServer({ typeDefs, resolvers });
 server.listen().then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);
 });

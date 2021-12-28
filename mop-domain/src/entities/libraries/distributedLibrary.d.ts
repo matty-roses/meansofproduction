@@ -21,4 +21,3 @@ export declare class DistributedLibrary implements ILibrary {
     borrow(item: IThing, borrower: IBorrower, until: Date): ILoan;
     return(loan: ILoan): ILoan;
 }
-//# sourceMappingURL=distributedLibrary.d.ts.map

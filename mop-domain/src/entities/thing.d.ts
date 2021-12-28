@@ -31,4 +31,3 @@ export declare class Thing implements IThing {
     get status(): ThingStatus;
     set status(status: ThingStatus);
 }
-//# sourceMappingURL=thing.d.ts.map

@@ -5,4 +5,3 @@ export interface IRepository<T> {
     update(item: T): T;
     delete(id: string): boolean;
 }
-//# sourceMappingURL=IRepository.d.ts.map

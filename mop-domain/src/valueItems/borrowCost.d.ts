@@ -12,4 +12,3 @@ export declare class NumericBorrowCost implements IBorrowCost {
     add(other: IBorrowCost): IBorrowCost;
     clone(): IBorrowCost;
 }
-//# sourceMappingURL=borrowCost.d.ts.map

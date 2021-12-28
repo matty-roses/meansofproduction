@@ -9,4 +9,3 @@ export interface ILibrary {
     borrow(item: IThing, borrower: IBorrower, until: Date): ILoan;
     return(loan: ILoan): ILoan;
 }
-//# sourceMappingURL=ILibrary.d.ts.map

@@ -5,4 +5,3 @@ export declare class NoCost implements IBorrowCost {
     add(other: IBorrowCost): IBorrowCost;
     clone(): IBorrowCost;
 }
-//# sourceMappingURL=noCost.d.ts.map

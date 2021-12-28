@@ -15,7 +15,7 @@ import {NoCost} from "../../valueItems/noCost";
 const loc =  new Location(40.6501, -73.94958)
 
 
-describe("Borrower", () => {
+describe("DistributedLibrary", () => {
     it("should fail to loan if item is damaged", () => {
         const thing = new Thing("1", "testThing", loc, new NoCost(), ThingStatus.DAMAGED, "", [], null, null, [])
         const lender = new IndividualDistributedLender("testLender", new PersonName("Testy", "McTesterson"), [new EmailAddress("test@test.com")], [thing])

@@ -32,4 +32,3 @@ export declare class Loan implements ILoan {
     startReturn(): void;
     markItemDamaged(): void;
 }
-//# sourceMappingURL=loan.d.ts.map

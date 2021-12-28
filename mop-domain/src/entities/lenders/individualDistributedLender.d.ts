@@ -14,4 +14,3 @@ export declare class IndividualDistributedLender extends Person implements ILend
     get items(): Iterable<IThing>;
     preferredReturnLocation(item: IThing): Location;
 }
-//# sourceMappingURL=individualDistributedLender.d.ts.map
