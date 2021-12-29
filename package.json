@@ -1,9 +1,8 @@
 {
   "name": "means-of-production",
+  "private": true,
   "workspaces": [
-    "mop-domain",
-    "mop-graphql-api",
-    "mop-webclient"
+    "packages/*"
   ],
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",

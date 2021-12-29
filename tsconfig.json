@@ -1,12 +1,15 @@
 {
   "extends": "./tsconfig-base.json",
   "files": [
-    "packages/mop-domain/src/index.ts",
+    "packages/mop-domain/index.ts",
     "mop-graphql-api/src/server.ts"
   ],
   "references": [
     {
       "path": "./packages/mop-domain"
     },
+    {
+      "path": "./packages/mop-server-core"
+    }
   ]
 }
