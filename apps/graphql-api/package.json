@@ -1,0 +1,18 @@
+{
+  "name": "@meansofproduction/ts-node",
+  "description": "Example of using ts-node in a TS monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
+    "test": "yarn run start"
+  },
+  "dependencies": {
+    "@meansofproduction/domain": "*"
+  },
+  "devDependencies": {
+    "@types/node": "~16.11.0",
+    "ts-node": "~10.4.0",
+    "tsconfig-paths": "~3.12.0"
+  }
+}

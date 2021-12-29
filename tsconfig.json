@@ -1,15 +1,12 @@
 {
-  "extends": "./tsconfig-base.json",
-  "files": [
-    "packages/mop-domain/index.ts",
-    "mop-graphql-api/src/server.ts"
-  ],
-  "references": [
-    {
-      "path": "./packages/mop-domain"
+  "extends": "./tsconfig.build.json",
+
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@meansofproduction/components/*": ["packages/components/src/*"],
+      "@meansofproduction/*": ["packages/*/src"]
     },
-    {
-      "path": "./packages/mop-server-core"
-    }
-  ]
+    "noEmit": true
+  }
 }

@@ -1,0 +1,19 @@
+{
+  "name": "@meansofproduction/rollup-example",
+  "private": true,
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "@meansofproduction/domain": "*"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "~8.3.0",
+    "@types/node": "~16.11.0",
+    "rollup": "~2.62.0",
+    "tslib": "~2.3.0"
+  }
+}

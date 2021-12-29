@@ -1,0 +1,21 @@
+{
+  "name": "@nighttrax/components",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "yarn run clean && yarn run compile",
+    "clean": "rimraf -rf ./dist",
+    "compile": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "yarn run build"
+  },
+  "peerDependencies": {
+    "react": "~17.0.0"
+  },
+  "dependencies": {
+    "@meansofproduction/domain": "*"
+  },
+  "devDependencies": {
+    "@types/react": "~17.0.0",
+    "react": "~17.0.0",
+    "react-dom": "~17.0.0"
+  }
+}

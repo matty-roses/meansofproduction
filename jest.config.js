@@ -3,7 +3,7 @@ module.exports = {
         '^.+\\.ts?$': 'ts-jest',
     },
     roots: [
-        "mop-domain",
-        "mop-graphql-api",
+        "packages/domain",
+        "graphql-api",
     ]
 };
