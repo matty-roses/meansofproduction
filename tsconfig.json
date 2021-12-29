@@ -1,12 +1,15 @@
 {
   "extends": "./tsconfig-base.json",
-  "files": ["mop-graphql-api/src/server.ts"],
+  "files": [
+    "mop-graphql-api/src/server.ts",
+    "mop-domain/src/entities/libraries/distributedLibrary.d.ts"
+  ],
   "references": [
     {"path":  "./mop-domain"},
     {"path":  "./mop-graphql-api"}
   ],
   "compilerOptions": {
     "esModuleInterop": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
   }
 }
