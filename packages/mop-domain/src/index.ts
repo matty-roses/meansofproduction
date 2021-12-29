@@ -4,3 +4,4 @@ import { Thing} from "./entities/thing";
 import { Loan } from "./entities/loan";
 
 import { ThingStatus} from "./valueItems/thingStatus";
+import {DistributedLibrary} from "./entities/libraries/distributedLibrary";

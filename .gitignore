@@ -105,8 +105,7 @@ dist
 
 .idea/
 
-mop-domain/*.js
-mop-domain/*.js.map
+packages/mop-domain/lib/
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
@@ -131,3 +130,4 @@ mop-domain/*.js.map
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
