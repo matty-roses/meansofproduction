@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "target": "es5",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "composite": true,
+    "jsx": "react",
+    "baseUrl": ".", // This must be specified if "paths" is.
+    "paths": {
+      "mop-domain/*": ["mop-domain/*"]
+    },
+    "sourceMap": true
+  }
+}

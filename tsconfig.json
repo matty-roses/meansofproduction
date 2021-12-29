@@ -2,7 +2,8 @@
   "extends": "./tsconfig-base.json",
   "files": [
     "mop-graphql-api/src/server.ts",
-    "mop-domain/src/entities/libraries/distributedLibrary.d.ts"
+    "mop-domain/src/entities/libraries/distributedLibrary.d.ts",
+    "mop-webclient/src/index.tsx"
   ],
   "references": [
     {"path":  "./mop-domain"},
