@@ -1,1 +1,1 @@
-import "@nighttrax/bar";
+import "@meansofproduction/domain";

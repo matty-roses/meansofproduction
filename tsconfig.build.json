@@ -12,7 +12,8 @@
     "jsx": "react",
     "noEmit": false,
     "downlevelIteration": true,
-    "types": ["jest"]
+    "types": ["jest"],
+    "moduleResolution": "Node"
   },
   "exclude": [
     "node_modules",
