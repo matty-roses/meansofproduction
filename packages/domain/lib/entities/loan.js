@@ -1,6 +1,13 @@
 import { LoanStatus } from "../valueItems/loanStatus";
 import { ThingStatus } from "../valueItems/thingStatus";
 export class Loan {
+    id;
+    item;
+    borrower;
+    dueDate;
+    _dateReturned;
+    _status;
+    returnLocation;
     constructor(id, item, borrower, dueDate, status = LoanStatus.LOANED, returnLocation = null, dateReturned) {
         this.id = id;
         this.item = item;
@@ -31,14 +38,12 @@ export class Loan {
         return this._status;
     }
     startReturn() {
-        var _a;
-        (_a = this.lender) === null || _a === void 0 ? void 0 : _a.startReturn(this);
+        this.lender?.startReturn(this);
         this._status = LoanStatus.RETURN_STARTED;
         this._dateReturned = new Date();
     }
     markItemDamaged() {
-        var _a;
-        (_a = this.lender) === null || _a === void 0 ? void 0 : _a.finishReturn(this);
+        this.lender?.finishReturn(this);
         this._status = LoanStatus.RETURNED_DAMAGED;
         this.item.status = ThingStatus.DAMAGED;
     }

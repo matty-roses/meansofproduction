@@ -1,5 +1,5 @@
 {
-  "name": "@nighttrax/components",
+  "name": "@meansofproduction/components",
   "version": "1.0.0",
   "scripts": {
     "build": "yarn run clean && yarn run compile",

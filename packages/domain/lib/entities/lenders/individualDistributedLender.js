@@ -3,6 +3,8 @@ import { Person } from "../person";
 Class to represent the lenders in a distributed library
  */
 export class IndividualDistributedLender extends Person {
+    _items;
+    _returnLocationOverride;
     constructor(id, name, emails = [], items, returnLocationOverride) {
         super(id, name, emails);
         this._items = items;

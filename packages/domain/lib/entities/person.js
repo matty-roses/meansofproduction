@@ -1,4 +1,7 @@
 export class Person {
+    id;
+    name;
+    emails;
     constructor(id, name, emails = []) {
         this.id = id;
         this.name = name;

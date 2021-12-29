@@ -5,11 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "../../node_modules/.bin/jest --coverage",
-    "build": "../../node_modules/.bin/tsc"
+    "build": "yarn run clean && yarn run compile",
+    "clean": "rimraf -rf ./dist",
+    "compile": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "yarn run build"
   },
   "author": "Matty Roses",
   "repository": {
     "url": ""
   },
-  "license": "GPL-3.0-or-later"
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@types/jest": "^27.0.3"
+  }
 }

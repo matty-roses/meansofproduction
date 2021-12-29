@@ -8,3 +8,5 @@ import {DistributedLibrary} from "./entities/libraries/distributedLibrary";
 
 export * from "./entities/libraries/distributedLibrary"
 export * from "./entities/person"
+
+export const meaningOfLife = 42

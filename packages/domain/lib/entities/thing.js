@@ -1,11 +1,17 @@
 import { ThingStatus } from "../valueItems/thingStatus";
 import { NoCost } from "../valueItems/noCost";
 export class Thing {
+    id;
+    name;
+    description;
+    borrowingCost = new NoCost();
+    storageLocation;
+    imageUrls;
+    _status = ThingStatus.READY;
+    owner = null;
+    insuredAmount = null;
+    requiredBorrowerFlags;
     constructor(id, name, storageLocation, cost, currentStatus = ThingStatus.READY, description = "", imageUrls = [], owner = null, insuredAmount, requiredBorrowerFlags = []) {
-        this.borrowingCost = new NoCost();
-        this._status = ThingStatus.READY;
-        this.owner = null;
-        this.insuredAmount = null;
         this.id = id;
         this.name = name;
         this.description = description;

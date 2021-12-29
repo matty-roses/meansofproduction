@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
+    "module": "ESNext",
+    "target": "ESNext",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -10,7 +10,9 @@
     "esModuleInterop": true,
     "types": [],
     "jsx": "react",
-    "noEmit": false
+    "noEmit": false,
+    "downlevelIteration": true,
+    "types": ["jest"]
   },
   "exclude": [
     "node_modules",

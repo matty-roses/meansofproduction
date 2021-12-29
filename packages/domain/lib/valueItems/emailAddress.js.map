@@ -1,1 +1,1 @@
-{"version":3,"file":"emailAddress.js","sourceRoot":"","sources":["../../valueItems/emailAddress.ts"],"names":[],"mappings":"AAAA,MAAM,OAAO,YAAY;IAErB,YAAmB,KAAa;QAC5B,IAAI,CAAC,KAAK,GAAG,KAAK,CAAA;IACtB,CAAC;CACJ"}
+{"version":3,"file":"emailAddress.js","sourceRoot":"","sources":["../../valueItems/emailAddress.ts"],"names":[],"mappings":"AAAA,MAAM,OAAO,YAAY;IACL,KAAK,CAAS;IAC9B,YAAmB,KAAa;QAC5B,IAAI,CAAC,KAAK,GAAG,KAAK,CAAA;IACtB,CAAC;CACJ"}

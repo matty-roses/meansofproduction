@@ -3,6 +3,11 @@ import { Loan } from "../loan";
 import { LoanStatus } from "../../valueItems/loanStatus";
 import { InvalidThingStatusToBorrow } from "../../valueItems/exceptions";
 export class DistributedLibrary {
+    _name;
+    maxFees;
+    _borrowers;
+    _userIDsAndFees;
+    _lenders;
     constructor(name, maxFees, lenders, borrowers) {
         this._name = name;
         this.maxFees = maxFees;
