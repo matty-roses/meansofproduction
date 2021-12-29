@@ -55,3 +55,7 @@ Long term integration with voting platforms for libraries is a good move to ensu
 Libraries can optionally take Donations, which transfers the location to a library.
 
 Libraries create Loans of Items.
+
+## Tool links
+https://medium.com/@NiGhTTraX/making-typescript-monorepos-play-nice-with-other-tools-a8d197fdc680
+
