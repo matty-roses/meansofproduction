@@ -1,16 +1,16 @@
-import {NumericBorrowCost} from "../../valueItems/borrowCost";
-import {PersonName} from "../../valueItems/personName";
-import {Thing} from "../thing";
-import {ThingStatus} from "../../valueItems/thingStatus";
-import {InvalidThingStatusToBorrow} from "../../valueItems/exceptions";
-import {Borrower} from "../borrower";
-import {Loan} from "../loan";
-import {Location} from "../../valueItems/location";
-import {DistributedLibrary} from "./distributedLibrary";
-import {Money} from "../../valueItems/money";
-import {IndividualDistributedLender} from "../lenders/individualDistributedLender";
-import {EmailAddress} from "../../valueItems/emailAddress";
-import {NoCost} from "../../valueItems/noCost";
+import {NumericBorrowCost} from "../../../src/valueItems/borrowCost";
+import {PersonName} from "../../../src/valueItems/personName";
+import {Thing} from "../../../src/entities/thing";
+import {ThingStatus} from "../../../src/valueItems/thingStatus";
+import {InvalidThingStatusToBorrow} from "../../../src/valueItems/exceptions";
+import {Borrower} from "../../../src/entities/borrower";
+import {Loan} from "../../../src/entities/loan";
+import {Location} from "../../../src/valueItems/location";
+import {DistributedLibrary} from "../../../src/entities/libraries/distributedLibrary";
+import {Money} from "../../../src/valueItems/money";
+import {IndividualDistributedLender} from "../../../src/entities/lenders/individualDistributedLender";
+import {EmailAddress} from "../../../src/valueItems/emailAddress";
+import {NoCost} from "../../../src/valueItems/noCost";
 
 const loc =  new Location(40.6501, -73.94958)
 
