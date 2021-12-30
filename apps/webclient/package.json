@@ -1,5 +1,5 @@
 {
-  "name": "mop-webclient",
+  "name": "@meansofproduction/webclient",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

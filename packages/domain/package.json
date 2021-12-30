@@ -1,5 +1,5 @@
 {
-  "name": "mop-domain",
+  "name": "@meansofproduction/domain",
   "version": "0.1.0",
   "description": "Main domain library for means of production website, a free management tool for a distributed thing library",
   "main": "index.js",

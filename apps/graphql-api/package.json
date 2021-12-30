@@ -1,5 +1,5 @@
 {
-  "name": "mop-graphql-api",
+  "name": "@meansofproduction/graphql-api",
   "version": "1.0.0",
   "description": "Basic GraphQL API to power the MeansOfProduction system",
   "main": "index.js",
