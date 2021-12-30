@@ -1,72 +1,19 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const apollo_server_1 = require("apollo-server");
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+exports.__esModule = true;
+var apollo_server_1 = require("apollo-server");
 // todo move this to the graphql file
-const typeDefs = (0, apollo_server_1.gql) `
-    scalar DateTime
-    
-    type Email {
-        value: String!
-    }
-    
-    type PersonName {
-        first: String!
-        middle: String
-        last: String!
-    }
-    
-    type Person {
-        id: String!
-        name: PersonName
-        emails: [Email]
-    }
-    
-    enum ThingStatus {
-        READY
-        DAMAGED
-        LOST
-        DESTROYED
-        CURRENTLY_BORROWED
-    }
-    
-    type Thing {
-        id: String!
-        name: String!
-        description: String
-        imageUrls: [String]!
-        owner: Person
-        status: ThingStatus
-    }
-    
-    enum LoanStatus{
-        REQUESTED
-        LOANED
-        OVERDUE
-        WRITTEN_OFF
-        RETURNED_DAMAGED
-        RETURNED
-    }
-    
-    type Loan {
-        id: String!
-        item: Thing
-        borrower: Person
-        dueDate: DateTime!
-        active: Boolean
-        status: LoanStatus
-    }
-    
-    type Query {
-        loans: [Loan]
-        things: [Thing]
-    }
-`;
+var typeDefs = (0, apollo_server_1.gql)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    scalar DateTime\n    \n    type Email {\n        value: String!\n    }\n    \n    type PersonName {\n        first: String!\n        middle: String\n        last: String!\n    }\n    \n    type Person {\n        id: String!\n        name: PersonName\n        emails: [Email]\n    }\n    \n    enum ThingStatus {\n        READY\n        DAMAGED\n        LOST\n        DESTROYED\n        CURRENTLY_BORROWED\n    }\n    \n    type Thing {\n        id: String!\n        name: String!\n        description: String\n        imageUrls: [String]!\n        owner: Person\n        status: ThingStatus\n    }\n    \n    enum LoanStatus{\n        REQUESTED\n        LOANED\n        OVERDUE\n        WRITTEN_OFF\n        RETURNED_DAMAGED\n        RETURNED\n    }\n    \n    type Loan {\n        id: String!\n        item: Thing\n        borrower: Person\n        dueDate: DateTime!\n        active: Boolean\n        status: LoanStatus\n    }\n    \n    type Query {\n        loans: [Loan]\n        things: [Thing]\n    }\n"], ["\n    scalar DateTime\n    \n    type Email {\n        value: String!\n    }\n    \n    type PersonName {\n        first: String!\n        middle: String\n        last: String!\n    }\n    \n    type Person {\n        id: String!\n        name: PersonName\n        emails: [Email]\n    }\n    \n    enum ThingStatus {\n        READY\n        DAMAGED\n        LOST\n        DESTROYED\n        CURRENTLY_BORROWED\n    }\n    \n    type Thing {\n        id: String!\n        name: String!\n        description: String\n        imageUrls: [String]!\n        owner: Person\n        status: ThingStatus\n    }\n    \n    enum LoanStatus{\n        REQUESTED\n        LOANED\n        OVERDUE\n        WRITTEN_OFF\n        RETURNED_DAMAGED\n        RETURNED\n    }\n    \n    type Loan {\n        id: String!\n        item: Thing\n        borrower: Person\n        dueDate: DateTime!\n        active: Boolean\n        status: LoanStatus\n    }\n    \n    type Query {\n        loans: [Loan]\n        things: [Thing]\n    }\n"])));
 // load our schema from file
-const resolvers = {
+var resolvers = {
     Query: {}
 };
-const server = new apollo_server_1.ApolloServer({ typeDefs, resolvers });
-server.listen().then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
+var server = new apollo_server_1.ApolloServer({ typeDefs: typeDefs, resolvers: resolvers });
+server.listen().then(function (_a) {
+    var url = _a.url;
+    console.log("\uD83D\uDE80  Server ready at ".concat(url));
 });
-//# sourceMappingURL=server.js.map
+var templateObject_1;
