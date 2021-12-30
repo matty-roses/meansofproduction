@@ -5,19 +5,7 @@ import {Money} from "../valueItems/money"
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
 import {ILender} from "./lenders/ILender";
 import {NoCost} from "../valueItems/noCost";
-
-export interface IThing {
-    id: string;
-    name: string;
-    description: string;
-    borrowingCost: IBorrowCost;
-    storageLocation: Location;
-    imageUrls: string[];
-    owner: ILender | null;
-    insuredAmount: Money | null;
-    requiredBorrowerFlags: BorrowerVerificationFlags[];
-    status: ThingStatus;
-}
+import {IThing} from "./IThing";
 
 export class Thing implements IThing {
     readonly id: string

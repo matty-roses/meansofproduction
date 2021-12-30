@@ -1,10 +1,10 @@
 import {ILoan, Loan} from "../loan";
 import {Person} from "../person";
 import {ILender} from "./ILender";
-import {IThing} from "../thing";
 import {PersonName} from "../../valueItems/personName";
 import {EmailAddress} from "../../valueItems/emailAddress";
 import {Location} from "../../valueItems/location";
+import {IThing} from "../IThing";
 
 /*
 Class to represent the lenders in a distributed library

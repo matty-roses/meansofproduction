@@ -1,8 +1,9 @@
 import {IBorrower} from "../borrower";
-import {IThing} from "../thing";
 import {ILoan} from "../loan";
+import {IEntity} from "../IEntity"
+import {IThing} from "../IThing";
 
-export interface ILibrary {
+export interface ILibrary extends IEntity<ILibrary> {
     readonly name: string
     readonly availableItems: Iterable<IThing>
     readonly allItems: Iterable<IThing>

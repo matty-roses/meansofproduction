@@ -1,12 +1,12 @@
 import {Money} from "../../valueItems/money";
 import {IBorrower} from "../borrower";
-import {IThing} from "../thing";
 import {ThingStatus} from "../../valueItems/thingStatus";
 import {ILoan, Loan} from "../loan";
 import {ILibrary} from "./ILibrary";
 import {LoanStatus} from "../../valueItems/loanStatus";
 import {IndividualDistributedLender} from "../lenders/individualDistributedLender";
 import {InvalidThingStatusToBorrow} from "../../valueItems/exceptions";
+import {IThing} from "../IThing";
 
 export class DistributedLibrary implements ILibrary {
     private readonly _name: string

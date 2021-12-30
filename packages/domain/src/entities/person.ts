@@ -1,10 +1,11 @@
 import {PersonName} from "../valueItems/personName"
 import {EmailAddress} from "../valueItems/emailAddress";
+import {IPerson} from "./IPerson";
 
-export class Person {
-    public readonly id: string
-    public readonly name: PersonName
-    public readonly emails: EmailAddress[]
+export class Person implements IPerson {
+    readonly id: string
+    readonly name: PersonName
+    readonly emails: EmailAddress[]
 
     constructor(id: string, name: PersonName, emails: EmailAddress[] = []) {
         this.id = id
