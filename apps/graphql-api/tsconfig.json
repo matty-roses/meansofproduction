@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "outDir": "../../dist/graphql-api"
-  },
+    "rootDir": "./src",
+    "outDir": "../../dist/apps/graphql-api"
+  }
 }
