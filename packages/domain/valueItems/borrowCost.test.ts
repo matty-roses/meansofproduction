@@ -1,4 +1,4 @@
-import { NumericBorrowCost } from "../../src/valueItems/borrowCost";
+import { NumericBorrowCost } from "../valueItems/borrowCost";
 
 describe("BorrowCost", () => {
     it("should be able to return cost", () => {

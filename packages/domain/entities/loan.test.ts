@@ -1,11 +1,11 @@
-import {Loan} from "../../src/entities/loan"
-import {Thing} from "../../src/entities/thing"
-import {PersonName} from "../../src/valueItems/personName"
-import {LoanStatus} from "../../src/valueItems/loanStatus"
-import {ThingStatus} from "../../src/valueItems/thingStatus"
-import {Borrower} from "../../src/entities/borrower";
-import {Location} from "../../src/valueItems/location"
-import {NoCost} from "../../src/valueItems/noCost";
+import {Thing} from "./thing"
+import {PersonName} from "../valueItems/personName"
+import {LoanStatus} from "../valueItems/loanStatus"
+import {ThingStatus} from "../valueItems/thingStatus"
+import {Borrower} from "./borrower";
+import {Location} from "../valueItems/location"
+import {NoCost} from "../valueItems/noCost";
+import {Loan} from "./loan"
 
 const loc = new Location(40.6501, -73.94958)
 

@@ -9,3 +9,4 @@ packages/**/dist/
 
 packages/**/*.d.ts
 packages/**/*.d.ts.map
+*.js
