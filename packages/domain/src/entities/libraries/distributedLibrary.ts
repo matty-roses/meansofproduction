@@ -1,7 +1,8 @@
 import {Money} from "../../valueItems/money";
-import {IBorrower} from "../borrower";
+import {IBorrower} from "../IBorrower";
 import {ThingStatus} from "../../valueItems/thingStatus";
-import {ILoan, Loan} from "../loan";
+import {Loan} from "../loan";
+import {ILoan} from "../ILoan"
 import {ILibrary} from "./ILibrary";
 import {LoanStatus} from "../../valueItems/loanStatus";
 import {IndividualDistributedLender} from "../lenders/individualDistributedLender";
@@ -25,6 +26,10 @@ export class DistributedLibrary implements ILibrary {
     }
 
     public get name(): string {
+        return this._name
+    }
+
+    public get id(): string {
         return this._name
     }
 

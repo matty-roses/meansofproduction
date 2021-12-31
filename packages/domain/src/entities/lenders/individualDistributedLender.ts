@@ -1,4 +1,4 @@
-import {ILoan, Loan} from "../loan";
+import {ILoan} from "../ILoan";
 import {Person} from "../person";
 import {ILender} from "./ILender";
 import {PersonName} from "../../valueItems/personName";

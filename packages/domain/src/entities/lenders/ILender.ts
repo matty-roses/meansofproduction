@@ -1,4 +1,4 @@
-import {ILoan} from "../loan";
+import {ILoan} from "../ILoan";
 import {IEntity} from "../IEntity"
 import {IThing} from "../IThing";
 

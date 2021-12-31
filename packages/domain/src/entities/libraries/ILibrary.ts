@@ -1,5 +1,5 @@
-import {IBorrower} from "../borrower";
-import {ILoan} from "../loan";
+import {IBorrower} from "../IBorrower";
+import {ILoan} from "../ILoan";
 import {IEntity} from "../IEntity"
 import {IThing} from "../IThing";
 

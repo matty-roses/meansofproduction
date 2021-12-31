@@ -13,21 +13,4 @@ export class Borrower extends Person implements IBorrower {
         super(id, name, emails)
         this.verificationFlags = verificationFlags
     }
-
-    static from_dict(dict: Record<string, string | Record<string, any>>): IBorrower {
-        const email_entry = dict["emails"]
-        const emails = Array.isArray(email_entry)? email_entry : []
-
-        const name = new PersonName(
-            dict["name"]["firstName"],
-            dict["name"]["lastName"],
-            ["middleName"] in dict["name"]?dict["name"]["middleName"]:null
-        )
-        return new Borrower(
-            dict["id"].toString(),
-            name,
-            emails,
-            verificationFlags
-        )
-    }
 }
