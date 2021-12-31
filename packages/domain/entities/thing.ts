@@ -27,7 +27,7 @@ export class Thing implements IThing {
     readonly storageLocation: Location
     readonly imageUrls: string[]
     private _status: ThingStatus = ThingStatus.READY
-    readonly owner: ILender | null = null
+    readonly owner: ILender
     readonly insuredAmount: Money | null = null
     readonly requiredBorrowerFlags: BorrowerVerificationFlags[]
 
@@ -39,7 +39,7 @@ export class Thing implements IThing {
         currentStatus: ThingStatus = ThingStatus.READY,
         description: string = "",
         imageUrls: string[] = [],
-        owner: ILender | null = null,
+        owner: ILender,
         insuredAmount: Money | null,
         requiredBorrowerFlags: BorrowerVerificationFlags[] = []
     ) {
