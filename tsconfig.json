@@ -1,10 +1,9 @@
 {
-  "references": [
-    {
-      "path": "./packages/domain"
-    },
-    {
-      "path": "./apps/graphql-api"
-    }
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "baseUrl": "./"
+  },
+  "include": [
+    "./packages/*/**.ts"
   ]
 }

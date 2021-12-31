@@ -1,5 +1,5 @@
 {
-  "name": "@meansofproduction/domain",
+  "name": "@meansofproduction/server-core",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
