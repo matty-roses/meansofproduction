@@ -4,7 +4,8 @@
     "./packages/*"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "compile": "npm run compile -ws"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
