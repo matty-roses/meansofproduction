@@ -1,0 +1,24 @@
+{
+  "name": "@meansofproduction/is-odd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "rm -rf dist/* && tsc -p tsconfig.pkg.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matty-roses/meansofproduction.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matty-roses/meansofproduction/issues"
+  },
+  "homepage": "https://github.com/matty-roses/meansofproduction#readme",
+  "dependencies": {
+    "@meansofproduction/is-even": "^0.0.2"
+  }
+}

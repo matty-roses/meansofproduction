@@ -1,0 +1,11 @@
+
+coverage/
+
+.idea/
+
+node_modules/
+
+packages/**/dist/
+
+packages/**/*.d.ts
+packages/**/*.d.ts.map
