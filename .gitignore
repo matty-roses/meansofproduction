@@ -1,12 +1,9 @@
 
-coverage/
-
 .idea/
+
+coverage/
 
 node_modules/
 
-packages/**/dist/
-
+packages/**/*.js
 packages/**/*.d.ts
-packages/**/*.d.ts.map
-*.js

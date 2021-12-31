@@ -1,8 +1,9 @@
 {
-  "name": "@meansofproduction/is-odd",
+  "name": "@meansofproduction/server-core",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "rm -rf dist/* && tsc -p tsconfig.pkg.json"
@@ -17,8 +18,5 @@
   "bugs": {
     "url": "https://github.com/matty-roses/meansofproduction/issues"
   },
-  "homepage": "https://github.com/matty-roses/meansofproduction#readme",
-  "dependencies": {
-    "@meansofproduction/is-even": "^0.0.2"
-  }
+  "homepage": "https://github.com/matty-roses/meansofproduction#readme"
 }

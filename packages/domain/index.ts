@@ -1,6 +1,8 @@
-import { Person} from "./entities/person";
-import { Borrower } from "./entities/borrower";
-import { Thing} from "./entities/thing";
-import { Loan } from "./entities/loan";
+export * from "./entities/person";
+export * from "./entities/borrower";
+export * from "./entities/thing";
+export * from "./entities/loan";
 
-import { ThingStatus} from "./valueItems/thingStatus";
+export * from "./valueItems/thingStatus";
+
+export const meaningOfLife = 42
