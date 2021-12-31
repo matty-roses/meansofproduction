@@ -1,6 +1,6 @@
 import {IThing} from "./thing";
 import {LoanStatus} from "../valueItems/loanStatus";
-import {IBorrower} from "./borrower";
+import {IBorrower} from "./IBorrower";
 import {Location} from "../valueItems/location";
 import {ILender} from "./lenders/ILender";
 import {ThingStatus} from "../valueItems/thingStatus";

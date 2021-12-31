@@ -1,5 +1,5 @@
 import {Money} from "../../valueItems/money";
-import {IBorrower} from "../borrower";
+import {IBorrower} from "../IBorrower";
 import {IThing} from "../thing";
 import {ThingStatus} from "../../valueItems/thingStatus";
 import {ILoan, Loan} from "../loan";

@@ -1,4 +1,4 @@
-import {IBorrower} from "../borrower";
+import {IBorrower} from "../IBorrower";
 import {IThing} from "../thing";
 import {ILoan} from "../loan";
 
