@@ -1,10 +1,10 @@
 import {IBorrower} from "./IBorrower"
 import {IThing} from "./IThing"
 import {Location} from "../valueItems/location"
+import {IEntity} from "./IEntity"
 
 
-export interface ILoan {
-    readonly id: string
+export interface ILoan extends IEntity{
     readonly item: IThing
     readonly borrower: IBorrower
     readonly dueDate: Date

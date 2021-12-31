@@ -29,6 +29,10 @@ export class DistributedLibrary implements ILibrary {
         return this._name
     }
 
+    public get id(): string {
+        return this._name
+    }
+
     public canBorrow(borrower: IBorrower): boolean {
         const ids = this._borrowers.map(b => b.id)
         if (!(borrower.id in ids)) {

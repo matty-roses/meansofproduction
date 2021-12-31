@@ -4,10 +4,10 @@ import {Money} from "../valueItems/money"
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags"
 import {ThingStatus} from "../valueItems/thingStatus"
 import {Location} from "../valueItems/location"
+import {IEntity} from "./IEntity"
 
 
-export interface IThing {
-    id: string;
+export interface IThing extends IEntity {
     name: string;
     description: string;
     borrowingCost: IBorrowCost;

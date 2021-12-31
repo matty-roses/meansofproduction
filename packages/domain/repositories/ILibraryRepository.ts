@@ -1,8 +1,8 @@
 import {IRepository} from "./IRepository";
-import {User} from "../entities/user";
+import {IUser} from "../entities/IUser";
 import {ILibrary} from "../entities/libraries/ILibrary";
 
 
 export interface ILibraryRepository extends IRepository<ILibrary>{
-    getLibrariesUserIsAMemberOf(user: User): Iterable<ILibrary>
+    getLibrariesUserIsAMemberOf(user: IUser): Iterable<ILibrary>
 }

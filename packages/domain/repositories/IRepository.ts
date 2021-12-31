@@ -1,4 +1,6 @@
-export interface IRepository<T> {
+import {IEntity} from "../entities/IEntity"
+
+export interface IRepository<T extends IEntity> {
     getAll(): Iterable<T>
     get(id: string): T | null
     add(item: T): T
