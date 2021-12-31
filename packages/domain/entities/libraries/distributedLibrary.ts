@@ -1,8 +1,9 @@
 import {Money} from "../../valueItems/money";
-import {IBorrower} from "../borrower";
-import {IThing} from "../thing";
+import {IBorrower} from "../IBorrower";
+import {IThing} from "../IThing";
 import {ThingStatus} from "../../valueItems/thingStatus";
-import {ILoan, Loan} from "../loan";
+import {ILoan} from "../ILoan";
+import {Loan} from "../loan"
 import {ILibrary} from "./ILibrary";
 import {LoanStatus} from "../../valueItems/loanStatus";
 import {IndividualDistributedLender} from "../lenders/individualDistributedLender";

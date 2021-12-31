@@ -1,6 +1,6 @@
-import {IBorrower} from "../borrower";
-import {IThing} from "../thing";
-import {ILoan} from "../loan";
+import {IBorrower} from "../IBorrower";
+import {IThing} from "../IThing";
+import {ILoan} from "../ILoan";
 
 export interface ILibrary {
     readonly name: string

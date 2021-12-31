@@ -1,5 +1,5 @@
-import {ILoan} from "../loan";
-import {IThing} from "../thing"
+import {ILoan} from "../ILoan";
+import {IThing} from "../IThing"
 
 export interface ILender {
     readonly id: string

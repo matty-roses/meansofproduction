@@ -1,7 +1,7 @@
-import {ILoan, Loan} from "../loan";
+import {ILoan} from "../ILoan";
 import {Person} from "../person";
 import {ILender} from "./ILender";
-import {IThing} from "../thing";
+import {IThing} from "../IThing";
 import {PersonName} from "../../valueItems/personName";
 import {EmailAddress} from "../../valueItems/emailAddress";
 import {Location} from "../../valueItems/location";
