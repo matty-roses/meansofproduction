@@ -1,0 +1,59 @@
+enum ThingStatus {
+    READY,
+    DAMAGED,
+    LOST,
+    DESTROYED
+}
+
+enum VerificationFlags {
+    PHONE_NUMBER,
+    EMAIL,
+    ID_SCANNED,
+    CURRENT_ADDRESS_VERIFIED
+}
+
+type Location {
+    latitude: Float
+    longitude: Float
+    address: String
+}
+
+type Thing {
+    id: String!
+    name: String!
+    description: String
+    storageLocation: Location!
+    imageUrls: [String]!
+    owner_id: String!
+    status: ThingStatus!
+}
+
+type PersonName{
+    firstName: String!
+    middleName: String
+    LastName: String
+}
+
+type EmailAddress {
+    value: String!
+}
+
+type Person {
+    id: String!
+    name: PersonName
+    emails: [EmailAddress]!
+}
+
+type Borrower {
+    id: String!
+    verificationFlags: [VerificationFlags]!
+    person: Person
+}
+
+type Library {
+    id: String,
+    name: String,
+    availableItems: [Thing]!,
+    allItems: [Thing]!,
+    borrowers: [Borrower]!
+}

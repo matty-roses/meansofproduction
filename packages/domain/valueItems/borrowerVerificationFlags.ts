@@ -4,5 +4,4 @@ export enum BorrowerVerificationFlags{
     EMAIL_VERIFIED,
     ID_SCANNED,
     CURRENT_ADDRESS_VERIFIED,
-    ITEM_RFID_CHIP
 }
