@@ -1,6 +1,6 @@
 import {IBorrower} from "../IBorrower";
-import {IThing} from "../thing";
-import {ILoan} from "../loan";
+import {IThing} from "../IThing";
+import {ILoan} from "../ILoan";
 
 export interface ILibrary {
     readonly name: string
