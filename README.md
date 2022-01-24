@@ -38,7 +38,7 @@ A person or entity that owns an item.  They might also be responsible for evalua
 ### Borrower
 A person or entity which borrows an item through a `Loan`.
 
-Borrowers who return items late or with damage can accrue either fees or demerits, depending on the library policies.  Fees can alternatively be denominated in FairCoin, to allow a non-capitalist solution to library costs.
+Borrowers who return items late or with damage can accrue either fees or demerits, depending on the library policies.
 
 ### Loan
 The temporary transfer of an item to a borrower to supply a need.  Fills the Usufruct need - so a borrower might use and enjoy the benefits of an item, but is not free to destroy or permanently remove it (such as selling it).
@@ -81,3 +81,6 @@ https://medium.com/@NiGhTTraX/making-typescript-monorepos-play-nice-with-other-t
 
 ## Onboarding for existing libraries
 Many local or free libraries exist.  We should make it so not only can our software support their needs - but that we can offer an "all-library" view of items available anywhere a member has membership
+
+## Faircoin integration
+For fees
