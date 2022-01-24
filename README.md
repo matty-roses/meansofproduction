@@ -1,3 +1,5 @@
+![Means Of Production logo](https://github.com/matty-roses/meansofproduction/raw/fix_structure/media/Original%20Logo.png?raw=true)
+
 # meansofproduction
 A free as in beer application to manage a distributed library, especially a library of things.
 
