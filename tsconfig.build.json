@@ -15,6 +15,9 @@
     "declaration": true,
     "paths": {
       "@meansofproduction/*": ["./packages/*/"]
-    }
+    },
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "useUnknownInCatchVariables": true
   }
 }

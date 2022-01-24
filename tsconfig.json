@@ -2,7 +2,8 @@
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "useUnknownInCatchVariables": true
   },
   "include": [
     "./packages/*/**.ts"

@@ -1,6 +1,6 @@
 {
   "name": "@meansofproduction/graphql-api",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,8 @@
   "dependencies": {
     "@types/graphql": "^14.5.0",
     "apollo-server": "^3.6.1",
-    "ts-node": "^10.4.0"
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4",
+    "@meansofproduction/server-core": "*"
   }
 }

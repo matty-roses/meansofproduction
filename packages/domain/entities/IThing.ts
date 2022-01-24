@@ -17,4 +17,5 @@ export interface IThing extends IEntity {
     insuredAmount: Money | null;
     requiredBorrowerFlags: BorrowerVerificationFlags[];
     status: ThingStatus;
+    movable: boolean
 }
