@@ -62,10 +62,35 @@ Libraries create Loans of Items.
 https://medium.com/@NiGhTTraX/making-typescript-monorepos-play-nice-with-other-tools-a8d197fdc680
 
 
+# FAQs about distributed libraries
+## Who owns the items?
+The same people that do now.  You are simply advertising that you're willing to lend the item to others.  You can impose some conditions on the lenders - like, for example, they've proven their legal name, etc.
+
+## Can I remove my item from the library?
+Yes, with the exception you'll need to wait till any current loans have been returned.  You can then remove the item from borrowing.
+
+## What if my item is damanged when I lend it?
+Currently that's the risk being taken by the lender.  Depending on the library, they likely will penalize the borrower to mark them as less trustworthy, and long term we'll be looking to create an insurance fund to partially compensate lenders and encourage more lending.
+
+## Is there anything I can't lend?
+Nope.  If you want to lend food, we advise making it a permanent loan, unless you're really into composting.  
+
+We ask for legal reasons you don't list anything you know to be illegal.
+
+## What is a permanent loan
+A permanent loan is where you don't want the item anymore, so you don't demand a return date.
+
+## Isn't a permanent loan just giving the item away?
+No - per the principle of usufruct, it means the person can use and profit from the item, but not permanently stop others from using it.
+
+In plain words, it means I give you the item, with the condition you don't sell it, instead giving it to someone else if you no longer want it.
+
+
 # Long Term Org ideas
 ## DAOify this organization
 ### Tokens would be granted for 
 - providing identify verification for self or others
+-     this can also aid in modelling lending risk long term
 - lending items
 - borrowing items and returning them
 - donations of funds
@@ -84,3 +109,6 @@ Many local or free libraries exist.  We should make it so not only can our softw
 
 ## Faircoin integration
 For fees
+
+## Insurance of distributed lenders
+### Risk modeling of borrowers
