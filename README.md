@@ -112,3 +112,6 @@ For fees
 
 ## Insurance of distributed lenders
 ### Risk modeling of borrowers
+
+## Large scale distributed Kubernetes cluster
+This will run over WireGuard VPN - we'll require 2 clusters.  One is to provide the VPN to the public, and also act as the general admin (able to approve or revoke general VPN certs for who can join the cluster).  The second uses the VPN provided by the first, and allows anyone to join their computer to a cluster to provide cloud resources and give a crowd sourced alternative to AWS and the like.
