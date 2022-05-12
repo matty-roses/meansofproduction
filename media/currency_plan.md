@@ -12,16 +12,18 @@
   - protect against members who do not return items
 
 ## Token types
-- Membership - granted to any member of the library who is in good standing
+### Membership - 
+granted to any member of the library who is in good standing
   - non-transferable
   - limit of one per person
   - allows the user to borrow items
   - can be revoked or suspended if policies not followed
-  - existing already - MOP
-- Library administration - should be same token as membership
+  - existing already - MOP 
+### Library administration 
+should be same token as membership
   - allows voting on library matters
-  - includes voting on all purchases, membership, etc
-- Labor token
+  - includes voting on all purchases, membership, etc 
+### Labor token
   - given when members do work to benefit the library
   - denominated in hours
   - more than one sequence of tokens might be generated
@@ -37,8 +39,8 @@
     - is the value fixed by vote?  Wage should be above standard
       - consider starting at $50/hr
         - this price is what the capital coin can exchange at, $50 of donation gets one hour labor
-    - can pay the fees and fines of the library
-- Capital token
+    - can pay the fees and fines of the library 
+### Capital token
   - denominated in dollars or fiat
   - issued when capital (funds or goods) are given to the library
   - debited when the library purchases from
@@ -50,7 +52,7 @@
   - if an org or individual with a negative balance wants to join, they must bring their balance to zero!
     - they can do this by donating money, and thus buying labor coins
   - can be exchanged for labor tokens, but only after a set time period, like 6 months
-  
+
 ## Example flow
 Our library aims to have an eventual value of $100,000.
 We vote to issue a labor coin, at a wage of $50/hr.  We thus issue 2000 hour coins.
@@ -75,4 +77,24 @@ They are required to get the library to purchase 100 capital debits
 The library is willing to buy them for $110 dollars, which the outside provider pays to the library.
 The library then takes their debit tokens back.
 
+## Token exchanges
+### Labor to external (foreign trade)
+Labor tokens should be the only ones which are directly transferable to ETH
 
+The library should designate an amount of ETH/stable coin which is available for purchase by labor token
+
+_this should be far less than the amount of value the total labor token pool represents_, this is how much labor (and capital) the library socialist society is willing to export.  Market mechanisms can work on the price from there
+
+#### example
+- The library marks $100 of stable coin as available for purchase, with a total labor coin supply of 1000 MOPL
+- Person A, who has 10 MOPT, wants to trade these for dollars to buy video games
+- Person B has 3 MOPT and wants to trade to dollars as well
+- Person A bids 1 MOPT for $50
+- Person B bids 2 MOPT for $50, etc
+- auction ends at Person A buying $50 for 4 MOPT
+- MOPT goes back to library, stable coin is transferred to Person A
+
+
+#### Question - 
+should labor go through the library for safety, or be allowed to transfer?
+if to transfer, can we do ensure they can ONLY transfer to wallets with a MOP membership token?
