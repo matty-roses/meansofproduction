@@ -40,6 +40,15 @@ should be same token as membership
       - consider starting at $50/hr
         - this price is what the capital coin can exchange at, $50 of donation gets one hour labor
     - can pay the fees and fines of the library 
+   #### Bonuses
+  Certain things should pay a bonus above regular hourly tokens.
+  However we do not want this to just become wage labor again! 
+    
+Perhaps bonuses should be yet another token, with slightly less use than regular labor tokens?
+
+Items for bonus
+- onerous work - if you have to clean shit, you shouldn't have to as long
+- automation - this is key, and should be VERY high.  If you can design a system to save 100 hours of work, you should get labor vouchers for what you saved to encourage innovation.  But who determines the amount saved?
 ### Capital token
   - denominated in dollars or fiat
   - issued when capital (funds or goods) are given to the library
