@@ -3,7 +3,7 @@ import {Thing} from "./thing"
 import {PersonName} from "../valueItems/personName"
 import {LoanStatus} from "../valueItems/loanStatus"
 import {ThingStatus} from "../valueItems/thingStatus"
-import {Borrower} from "./borrower";
+import {Borrower} from "./people/borrower";
 import {Location} from "../valueItems/location"
 import {NoCost} from "../valueItems/noCost";
 

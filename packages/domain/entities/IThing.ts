@@ -1,6 +1,6 @@
 import {IBorrowCost} from "../valueItems/borrowCost"
 import {ILender} from "./lenders/ILender"
-import {Money} from "../valueItems/money"
+import {Money} from "../valueItems/money/money"
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags"
 import {ThingStatus} from "../valueItems/thingStatus"
 import {Location} from "../valueItems/location"

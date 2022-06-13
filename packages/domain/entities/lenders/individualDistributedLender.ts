@@ -1,5 +1,5 @@
 import {ILoan} from "../ILoan";
-import {Person} from "../person";
+import {Person} from "../people/person";
 import {ILender} from "./ILender";
 import {IThing} from "../IThing";
 import {PersonName} from "../../valueItems/personName";

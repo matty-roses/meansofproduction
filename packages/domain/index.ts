@@ -1,5 +1,5 @@
-export * from "./entities/person";
-export * from "./entities/borrower";
+export * from "./entities/people/person";
+export * from "./entities/people/borrower";
 export * from "./entities/thing";
 export * from "./entities/loan";
 

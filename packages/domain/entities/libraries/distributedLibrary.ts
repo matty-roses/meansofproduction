@@ -1,5 +1,5 @@
-import {Money} from "../../valueItems/money";
-import {IBorrower} from "../IBorrower";
+import {Money} from "../../valueItems/money/money";
+import {IBorrower} from "../people/IBorrower";
 import {IThing} from "../IThing";
 import {ThingStatus} from "../../valueItems/thingStatus";
 import {ILoan} from "../ILoan";

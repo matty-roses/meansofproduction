@@ -1,4 +1,4 @@
-import {IBorrower} from "./IBorrower"
+import {IBorrower} from "./people/IBorrower"
 import {IThing} from "./IThing"
 import {Location} from "../valueItems/location"
 
