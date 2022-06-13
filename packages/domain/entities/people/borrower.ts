@@ -10,10 +10,13 @@ import {ILibrary} from "../libraries/ILibrary";
 export class Borrower extends Person implements IBorrower {
     public readonly verificationFlags: BorrowerVerificationFlags[]
 
-    constructor(id: string, name: PersonName,
-                emails: EmailAddress[] = [], verificationFlags: BorrowerVerificationFlags[] = []) {
+    constructor(id: string, name: PersonName, library: ILibrary,
+                emails: EmailAddress[] = [], verificationFlags: BorrowerVerificationFlags[] = [],
+                fees: ILibraryFee[] = []) {
         super(id, name, emails)
         this.verificationFlags = verificationFlags
+        this.library = library
+        this.fees = fees
     }
 
     readonly fees: Iterable<ILibraryFee>;

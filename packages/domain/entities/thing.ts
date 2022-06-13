@@ -1,7 +1,7 @@
 import {ThingStatus} from "../valueItems/thingStatus"
 import {IBorrowCost} from "../valueItems/borrowCost";
 import {Location} from "../valueItems/location";
-import {Money} from "../valueItems/money/money"
+import {IMoney} from "../valueItems/money/IMoney"
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags";
 import {ILender} from "./lenders/ILender";
 import {NoCost} from "../valueItems/noCost";
@@ -17,7 +17,7 @@ export class Thing implements IThing {
     readonly imageUrls: string[]
     private _status: ThingStatus = ThingStatus.READY
     readonly owner: ILender | null = null
-    readonly insuredAmount: Money | null = null
+    readonly insuredAmount: IMoney | null = null
     readonly requiredBorrowerFlags: BorrowerVerificationFlags[]
 
     constructor(
@@ -29,7 +29,7 @@ export class Thing implements IThing {
         description: string = "",
         imageUrls: string[] = [],
         owner: ILender | null = null,
-        insuredAmount: Money | null,
+        insuredAmount: IMoney | null,
         requiredBorrowerFlags: BorrowerVerificationFlags[] = []
     ) {
         this.id = id

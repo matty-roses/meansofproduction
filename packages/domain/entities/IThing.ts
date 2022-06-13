@@ -1,6 +1,6 @@
 import {IBorrowCost} from "../valueItems/borrowCost"
 import {ILender} from "./lenders/ILender"
-import {Money} from "../valueItems/money/money"
+import {IMoney} from "../valueItems/money/IMoney"
 import {BorrowerVerificationFlags} from "../valueItems/borrowerVerificationFlags"
 import {ThingStatus} from "../valueItems/thingStatus"
 import {Location} from "../valueItems/location"
@@ -14,7 +14,7 @@ export interface IThing {
     storageLocation: Location;
     imageUrls: string[];
     owner: ILender | null;
-    insuredAmount: Money | null;
+    insuredAmount: IMoney | null;
     requiredBorrowerFlags: BorrowerVerificationFlags[];
     status: ThingStatus;
 }
