@@ -7,16 +7,18 @@ import {ILibraryFee} from "../libraries/ILibraryFee";
 import {ILibrary} from "../libraries/ILibrary";
 
 // this is effectively the library card
-export class Borrower extends Person implements IBorrower {
+export class Borrower implements IBorrower {
+    public readonly id: string
     public readonly verificationFlags: BorrowerVerificationFlags[]
+    public readonly person: Person;
 
-    constructor(id: string, name: PersonName, library: ILibrary,
-                emails: EmailAddress[] = [], verificationFlags: BorrowerVerificationFlags[] = [],
+    constructor(id: string, person: Person, library: ILibrary, verificationFlags: BorrowerVerificationFlags[] = [],
                 fees: ILibraryFee[] = []) {
-        super(id, name, emails)
+        this.person = person;
         this.verificationFlags = verificationFlags
         this.library = library
         this.fees = fees
+        this.id = id
     }
 
     readonly fees: Iterable<ILibraryFee>;

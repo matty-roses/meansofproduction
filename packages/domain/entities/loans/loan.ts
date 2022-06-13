@@ -1,4 +1,4 @@
-import {IThing} from "../IThing";
+import {IThing} from "../things/IThing";
 import {LoanStatus} from "../../valueItems/loanStatus";
 import {IBorrower} from "../people/IBorrower";
 import {Location} from "../../valueItems/location";

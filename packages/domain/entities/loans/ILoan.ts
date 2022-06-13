@@ -1,5 +1,5 @@
 import {IBorrower} from "../people/IBorrower"
-import {IThing} from "../IThing"
+import {IThing} from "../things/IThing"
 import {Location} from "../../valueItems/location"
 
 
