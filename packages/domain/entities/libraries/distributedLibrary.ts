@@ -2,8 +2,8 @@ import {Money} from "../../valueItems/money/money";
 import {IBorrower} from "../people/IBorrower";
 import {IThing} from "../IThing";
 import {ThingStatus} from "../../valueItems/thingStatus";
-import {ILoan} from "../ILoan";
-import {Loan} from "../loan"
+import {ILoan} from "../loans/ILoan";
+import {Loan} from "../loans/loan"
 import {ILibrary} from "./ILibrary";
 import {LoanStatus} from "../../valueItems/loanStatus";
 import {IndividualDistributedLender} from "../lenders/individualDistributedLender";
@@ -13,14 +13,12 @@ export class DistributedLibrary implements ILibrary {
     private readonly _name: string
     public readonly maxFees: Money
     private readonly _borrowers: IBorrower[]
-    private readonly _userIDsAndFees: Record<string, Money>
     private readonly _lenders: IndividualDistributedLender[]
 
     constructor(name: string, maxFees: Money, lenders: IndividualDistributedLender[], borrowers: IBorrower[]) {
         this._name = name
         this.maxFees = maxFees
 
-        this._userIDsAndFees = {}
         this._lenders = lenders
         this._borrowers = borrowers
     }

@@ -4,7 +4,7 @@ import {Thing} from "../thing";
 import {ThingStatus} from "../../valueItems/thingStatus";
 import {InvalidThingStatusToBorrow} from "../../valueItems/exceptions";
 import {Borrower} from "../people/borrower";
-import {Loan} from "../loan";
+import {Loan} from "../loans/loan";
 import {Location} from "../../valueItems/location";
 import {DistributedLibrary} from "../libraries/distributedLibrary";
 import {Money} from "../../valueItems/money/money";

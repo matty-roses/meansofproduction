@@ -1,11 +1,11 @@
 import {Loan} from "./loan"
-import {Thing} from "./thing"
-import {PersonName} from "../valueItems/personName"
-import {LoanStatus} from "../valueItems/loanStatus"
-import {ThingStatus} from "../valueItems/thingStatus"
-import {Borrower} from "./people/borrower";
-import {Location} from "../valueItems/location"
-import {NoCost} from "../valueItems/noCost";
+import {Thing} from "../thing"
+import {PersonName} from "../../valueItems/personName"
+import {LoanStatus} from "../../valueItems/loanStatus"
+import {ThingStatus} from "../../valueItems/thingStatus"
+import {Borrower} from "../people/borrower";
+import {Location} from "../../valueItems/location"
+import {NoCost} from "../../valueItems/noCost";
 
 const loc = new Location(40.6501, -73.94958)
 

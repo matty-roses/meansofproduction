@@ -1,5 +1,5 @@
 import {IMoney} from "../../valueItems/money/IMoney";
-import {ILoan} from "../ILoan";
+import {ILoan} from "../loans/ILoan";
 
 export interface ILibraryFee {
     readonly isCurrent: boolean

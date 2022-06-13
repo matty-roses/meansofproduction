@@ -1,4 +1,4 @@
-import {ILoan} from "../ILoan";
+import {ILoan} from "../loans/ILoan";
 import {IThing} from "../IThing"
 
 export interface ILender {
