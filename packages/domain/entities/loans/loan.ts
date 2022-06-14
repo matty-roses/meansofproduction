@@ -6,7 +6,7 @@ import {ILender} from "../lenders/ILender";
 import {ThingStatus} from "../../valueItems/thingStatus";
 import {ILoan} from "./ILoan"
 
-export class Loan implements ILoan{
+export class Loan implements ILoan {
     public readonly id: string
     public readonly item: IThing
     public readonly borrower: IBorrower
@@ -29,11 +29,9 @@ export class Loan implements ILoan{
         }
         this._dateReturned = dateReturned
     }
-    public get lender(): ILender | null {
-        if(this.item.owner){
-            return this.item.owner
-        }
-        return null
+
+    public get lender(): ILender {
+        return this.item.owner
     }
 
     public get active(): boolean {
@@ -47,13 +45,13 @@ export class Loan implements ILoan{
     }
 
     public startReturn() {
-        this.lender?.startReturn(this)
+        this.lender.startReturn(this)
         this._status = LoanStatus.RETURN_STARTED
         this._dateReturned = new Date()
     }
 
     public markItemDamaged() {
-        this.lender?.finishReturn(this)
+        this.lender.finishReturn(this)
         this._status = LoanStatus.RETURNED_DAMAGED
         this.item.status = ThingStatus.DAMAGED
     }

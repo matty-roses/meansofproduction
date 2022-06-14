@@ -16,6 +16,10 @@ export abstract class BaseLibrary implements ILibrary{
         }
     }
 
+    protected makeLoanId(): string{
+        return "guid"
+    }
+
     public get borrowers(): Iterable<IBorrower>{
         return this._borrowers
     }

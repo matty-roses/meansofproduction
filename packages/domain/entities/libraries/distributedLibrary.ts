@@ -54,10 +54,6 @@ export class DistributedLibrary extends BaseLibrary{
         return null
     }
 
-    private makeLoanId(): string{
-        return "guid"
-    }
-
     borrow(item: IThing, borrower: IBorrower, until: Date): ILoan {
         if (item.status === ThingStatus.DAMAGED) {
             throw new InvalidThingStatusToBorrow(item.status)

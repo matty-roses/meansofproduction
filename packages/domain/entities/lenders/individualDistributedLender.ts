@@ -2,19 +2,21 @@ import {ILoan} from "../loans/ILoan";
 import {Person} from "../people/person";
 import {ILender} from "./ILender";
 import {IThing} from "../things/IThing";
-import {PersonName} from "../../valueItems/personName";
 import {EmailAddress} from "../../valueItems/emailAddress";
 import {Location} from "../../valueItems/location";
 
 /*
 Class to represent the lenders in a distributed library
  */
-export class IndividualDistributedLender extends Person implements ILender{
+export class IndividualDistributedLender implements ILender{
     private readonly _items: Iterable<IThing>
+    readonly person: Person
+    readonly id: string
     private readonly _returnLocationOverride: Location | undefined
 
-    constructor(id: string, name: PersonName, emails: EmailAddress[] = [], items: Iterable<IThing>, returnLocationOverride?: Location){
-        super(id, name, emails)
+    constructor(id: string, person: Person, emails: EmailAddress[] = [], items: Iterable<IThing>, returnLocationOverride?: Location){
+        this.id = id
+        this.person = person
         this._items = items
         this._returnLocationOverride = returnLocationOverride
     }
