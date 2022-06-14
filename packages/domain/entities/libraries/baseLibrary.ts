@@ -5,7 +5,7 @@ import {ILoan} from "../loans/ILoan";
 import {ThingTitle} from "../../valueItems/thingTitle";
 
 export abstract class BaseLibrary implements ILibrary{
-    private _borrowers:IBorrower[]
+    private readonly _borrowers:IBorrower[]
     readonly name: string;
 
     protected constructor(name: string, borrowers: Iterable<IBorrower>) {
@@ -21,21 +21,18 @@ export abstract class BaseLibrary implements ILibrary{
     }
 
     protected getTitlesFromItems(items: Iterable<IThing>): Iterable<ThingTitle>{
-        const titlesMap = {}
+        const titles = []
         for (const item of items){
-            if (!item.title.hash in titlesMap){
-                titlesMap[item.title.hash] = item.title
+            const existing = titles.filter(t => t.equals(item.title))
+            if(existing.length === 0){
+                titles.push(item.title)
             }
         }
 
-        const res = []
-        for(const hash in titlesMap){
-            res.push(titlesMap[hash])
-        }
-        return res
+        return titles
     }
 
-    protected addBorrower(borrower: IBorrower): IBorrower{
+    public addBorrower(borrower: IBorrower): IBorrower{
         this._borrowers.push(borrower)
         return borrower
     }

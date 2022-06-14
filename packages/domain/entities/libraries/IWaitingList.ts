@@ -5,7 +5,7 @@ import {IMoney} from "../../valueItems/money/IMoney";
 export interface IWaitingList{
     next() : IBorrower;
     isOnList(borrower: IBorrower): boolean;
-    remove(borrower: IBorrower);
+    remove(borrower: IBorrower): void;
 }
 
 export interface IAuctionBid{
@@ -20,5 +20,5 @@ export interface IAuctionableWaitingList extends IWaitingList{
 
     getWinningBorrower(): [IBorrower, IMoney];
     getBids(): Iterable<IAuctionBid>;
-    addBid(IAuctionBid): void;
+    addBid(bid: IAuctionBid): void;
 }

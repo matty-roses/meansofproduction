@@ -8,16 +8,18 @@ import {Borrower} from "../people/borrower";
 import {Location} from "../../valueItems/location"
 import {NoCost} from "../../valueItems/noCost";
 import {SimpleLibrary} from "../libraries/simpleLibrary";
+import {ThingTitle} from "../../valueItems/thingTitle";
 
 const loc = new Location(40.6501, -73.94958)
 
 const testLib = new SimpleLibrary("testLibrary", [], []);
 const testPerson = new Person("bob", new PersonName("Doug", "Jones"))
 
+const testTitle = new ThingTitle("test")
 describe("Loan", () => {
     it('should change item to damaged when returned damaged', () => {
         const borrower = new Borrower("1", testPerson, testLib)
-        const thing = new Thing("test", "test", loc, new NoCost(), ThingStatus.READY, "", [], null, null, [])
+        const thing = new Thing("test", testTitle, loc, new NoCost(), ThingStatus.READY, "", [], null, null, [])
 
         const loan = new Loan(
             "loanId",
@@ -37,7 +39,7 @@ describe("Loan", () => {
 
     it('should change item to ready when loan is ready', () => {
         const borrower = new Borrower("1", testPerson, testLib)
-        const thing = new Thing("test", "test", loc, new NoCost(), ThingStatus.READY, "", [], null, null, [])
+        const thing = new Thing("test", testTitle, loc, new NoCost(), ThingStatus.READY, "", [], null, null, [])
 
         const loan = new Loan(
             "testId",

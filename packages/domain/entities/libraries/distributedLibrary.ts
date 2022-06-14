@@ -14,8 +14,8 @@ export class DistributedLibrary extends BaseLibrary{
     public readonly maxFees: IMoney
     private readonly _lenders: IndividualDistributedLender[]
 
-    constructor(name: string, borrowers: Iterable<IBorrower>,maxFees: IMoney, lenders: IndividualDistributedLender[]) {
-        super(name, borrowers)
+    constructor(name: string, maxFees: IMoney, lenders: IndividualDistributedLender[]) {
+        super(name, [])
         this.maxFees = maxFees
 
         this._lenders = lenders

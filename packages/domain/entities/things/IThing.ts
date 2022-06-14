@@ -10,7 +10,6 @@ import {Location} from "../../valueItems/location"
 export interface IThing {
     id: string;
     title: ThingTitle;
-    description: string;
     borrowingCost: IBorrowCost;
     storageLocation: Location;
     imageUrls: string[];

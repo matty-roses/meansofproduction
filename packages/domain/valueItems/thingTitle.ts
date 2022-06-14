@@ -2,11 +2,13 @@ export class ThingTitle{
     readonly name: string
     readonly isbn?: string
     readonly upc?: string
+    description?: string
 
-    constructor(name: string, isbn?: string, upc?: string){
+    constructor(name: string, isbn?: string, upc?: string, description?: string){
         this.name = name
         this.upc = upc
         this.isbn = isbn
+        this.description = description
     }
 
     public equals(other: ThingTitle): boolean{

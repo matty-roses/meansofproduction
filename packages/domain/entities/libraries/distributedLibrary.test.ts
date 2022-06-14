@@ -12,13 +12,15 @@ import {IndividualDistributedLender} from "../lenders/individualDistributedLende
 import {EmailAddress} from "../../valueItems/emailAddress";
 import {NoCost} from "../../valueItems/noCost";
 import {Person} from "../people/person";
+import {ThingTitle} from "../../valueItems/thingTitle";
 
 const loc =  new Location(40.6501, -73.94958)
 
 const testPerson = new Person("1", new PersonName("Testy", "McTesterson"))
+const testTitle = new ThingTitle("testThing")
 describe("DistributedLibrary", () => {
     it("should fail to loan if item is damaged", () => {
-        const thing = new Thing("1", "testThing", loc, new NoCost(), ThingStatus.DAMAGED, "", [], null, null, [])
+        const thing = new Thing("1", testTitle, loc, new NoCost(), ThingStatus.DAMAGED, "", [], null, null, [])
         const lender = new IndividualDistributedLender("testLender", new PersonName("Testy", "McTesterson"), [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(
@@ -31,7 +33,7 @@ describe("DistributedLibrary", () => {
     })
 
     it("makes a loan when borrowing", () => {
-        const thing = new Thing("1", "testThing", loc, new NoCost(), ThingStatus.READY, "", [], null, null, [])
+        const thing = new Thing("1", testTitle, loc, new NoCost(), ThingStatus.READY, "", [], null, null, [])
         const lender = new IndividualDistributedLender("testLender", new PersonName("Testy", "McTesterson"), [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(
@@ -46,7 +48,7 @@ describe("DistributedLibrary", () => {
     })
     it("marks a loan as inactive once returned", () => {
         const thing = new Thing(
-            "1", "testThing",
+            "1", testTitle,
             loc,
             new NoCost(),
             ThingStatus.CURRENTLY_BORROWED,
