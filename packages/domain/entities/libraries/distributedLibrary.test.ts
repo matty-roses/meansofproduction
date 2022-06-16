@@ -1,4 +1,3 @@
-import {NumericBorrowCost} from "../../valueItems/borrowCost";
 import {PersonName} from "../../valueItems/personName";
 import {Thing} from "../things/thing";
 import {ThingStatus} from "../../valueItems/thingStatus";
@@ -10,7 +9,6 @@ import {DistributedLibrary} from "../libraries/distributedLibrary";
 import {NoMoney} from "../../valueItems/money/NoMoney";
 import {IndividualDistributedLender} from "../lenders/individualDistributedLender";
 import {EmailAddress} from "../../valueItems/emailAddress";
-import {NoCost} from "../../valueItems/noCost";
 import {Person} from "../people/person";
 import {ThingTitle} from "../../valueItems/thingTitle";
 
@@ -22,7 +20,7 @@ const testLender = new IndividualDistributedLender("testLender", testPerson, [],
 
 describe("DistributedLibrary", () => {
     it("should fail to loan if item is damaged", () => {
-        const thing = new Thing("1", testTitle, loc, new NoCost(), ThingStatus.DAMAGED, "", [], testLender, null, [])
+        const thing = new Thing("1", testTitle, loc, testLender, ThingStatus.DAMAGED, "", [],null, [])
         const lender = new IndividualDistributedLender("testLender", testPerson, [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(
@@ -35,7 +33,7 @@ describe("DistributedLibrary", () => {
     })
 
     it("makes a loan when borrowing", () => {
-        const thing = new Thing("1", testTitle, loc, new NoCost(), ThingStatus.READY, "", [], testLender, null, [])
+        const thing = new Thing("1", testTitle, loc, testLender, ThingStatus.READY, "", [],null, [])
         const lender = new IndividualDistributedLender("testLender", testPerson, [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(
@@ -52,9 +50,9 @@ describe("DistributedLibrary", () => {
         const thing = new Thing(
             "1", testTitle,
             loc,
-            new NoCost(),
+            testLender,
             ThingStatus.CURRENTLY_BORROWED,
-            "", [], testLender, null, [])
+            "", [],null, [])
         const lender = new IndividualDistributedLender("testLender", testPerson, [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(

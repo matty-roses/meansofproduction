@@ -6,7 +6,6 @@ import {LoanStatus} from "../../valueItems/loanStatus"
 import {ThingStatus} from "../../valueItems/thingStatus"
 import {Borrower} from "../people/borrower";
 import {Location} from "../../valueItems/location"
-import {NoCost} from "../../valueItems/noCost";
 import {SimpleLibrary} from "../libraries/simpleLibrary";
 import {ThingTitle} from "../../valueItems/thingTitle";
 import {IndividualDistributedLender} from "../lenders/individualDistributedLender";
@@ -22,7 +21,7 @@ const testLender = new IndividualDistributedLender("lender", new Person("test", 
 describe("Loan", () => {
     it('should change item to damaged when returned damaged', () => {
         const borrower = new Borrower("1", testPerson, testLib)
-        const thing = new Thing("test", testTitle, loc, new NoCost(), ThingStatus.READY, "", [], testLender, null, [])
+        const thing = new Thing("test", testTitle, loc, testLender, ThingStatus.READY, "", [], null, [])
 
         const loan = new Loan(
             "loanId",
@@ -42,7 +41,7 @@ describe("Loan", () => {
 
     it('should change item to ready when loan is ready', () => {
         const borrower = new Borrower("1", testPerson, testLib)
-        const thing = new Thing("test", testTitle, loc, new NoCost(), ThingStatus.READY, "", [], testLender, null, [])
+        const thing = new Thing("test", testTitle, loc, testLender, ThingStatus.READY, "", [], null, [])
 
         const loan = new Loan(
             "testId",

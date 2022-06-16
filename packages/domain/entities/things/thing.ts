@@ -12,7 +12,6 @@ import {ThingTitle} from "../../valueItems/thingTitle";
 export class Thing implements IThing {
     readonly id: string
     readonly description: string
-    readonly borrowingCost: IBorrowCost = new NoCost()
     readonly storageLocation: Location
     readonly imageUrls: string[]
     private _status: ThingStatus = ThingStatus.READY
@@ -26,11 +25,10 @@ export class Thing implements IThing {
         id: string,
         title: ThingTitle,
         storageLocation: Location,
-        cost: IBorrowCost,
+        owner: ILender,
         currentStatus: ThingStatus = ThingStatus.READY,
         description: string = "",
         imageUrls: string[] = [],
-        owner: ILender,
         insuredAmount: IMoney | null,
         requiredBorrowerFlags: BorrowerVerificationFlags[] = []
     ) {
@@ -40,7 +38,6 @@ export class Thing implements IThing {
         this.imageUrls = imageUrls
         this._status = currentStatus
         this.owner = owner
-        this.borrowingCost = cost
         this.storageLocation = storageLocation
         this.insuredAmount = insuredAmount
         this.requiredBorrowerFlags = requiredBorrowerFlags
