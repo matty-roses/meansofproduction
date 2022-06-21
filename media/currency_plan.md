@@ -50,7 +50,7 @@ Items for bonus
 - onerous work - if you have to clean shit, you shouldn't have to as long
 - automation - this is key, and should be VERY high.  If you can design a system to save 100 hours of work, you should get labor vouchers for what you saved to encourage innovation.  But who determines the amount saved?
 ### Capital token
-  - denominated in dollars or fiat
+  - denominated in dollars or fiat on creation
   - issued when capital (funds or goods) are given to the library
   - debited when the library purchases from
     - can have a negative balance, most will!
@@ -61,6 +61,9 @@ Items for bonus
   - if an org or individual with a negative balance wants to join, they must bring their balance to zero!
     - they can do this by donating money, and thus buying labor coins
   - can be exchanged for labor tokens, but only after a set time period, like 6 months
+      - this exchange rate will only be set by library votes!
+  - can be traded on external exchanges, we don't care.  We will redeem according to our rules, and we do not use them internally
+      - secondary market can provide pricing information for us to use in pricing exchange of labor, and external
 
 ## Example flow
 Our library aims to have an eventual value of $100,000.

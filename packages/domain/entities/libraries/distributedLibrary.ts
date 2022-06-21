@@ -1,60 +1,46 @@
-import {Money} from "../../valueItems/money";
-import {IBorrower} from "../IBorrower";
-import {IThing} from "../IThing";
+import {IMoney} from "../../valueItems/money/IMoney";
+import {IBorrower} from "../people/IBorrower";
+import {IThing} from "../things/IThing";
 import {ThingStatus} from "../../valueItems/thingStatus";
-import {ILoan} from "../ILoan";
-import {Loan} from "../loan"
-import {ILibrary} from "./ILibrary";
+import {ILoan} from "../loans/ILoan";
+import {Loan} from "../loans/loan"
 import {LoanStatus} from "../../valueItems/loanStatus";
 import {IndividualDistributedLender} from "../lenders/individualDistributedLender";
 import {InvalidThingStatusToBorrow} from "../../valueItems/exceptions";
+import {ThingTitle} from "../../valueItems/thingTitle";
+import {BaseLibrary} from "./baseLibrary";
 
-export class DistributedLibrary implements ILibrary {
-    private readonly _name: string
-    public readonly maxFees: Money
-    private readonly _borrowers: IBorrower[]
-    private readonly _userIDsAndFees: Record<string, Money>
+export class DistributedLibrary extends BaseLibrary{
+    public readonly maxFees: IMoney
     private readonly _lenders: IndividualDistributedLender[]
 
-    constructor(name: string, maxFees: Money, lenders: IndividualDistributedLender[], borrowers: IBorrower[]) {
-        this._name = name
+    constructor(name: string, maxFees: IMoney, lenders: IndividualDistributedLender[]) {
+        super(name, [])
         this.maxFees = maxFees
 
-        this._userIDsAndFees = {}
         this._lenders = lenders
-        this._borrowers = borrowers
-    }
-
-    public get name(): string {
-        return this._name
     }
 
     public canBorrow(borrower: IBorrower): boolean {
-        const ids = this._borrowers.map(b => b.id)
-        if (!(borrower.id in ids)) {
-            return false
+        for(const b of this.borrowers){
+            if(b.id === borrower.id){
+                // in the lib, for now that's enough
+                return true
+            }
         }
-        return true
+        return false
     }
 
-    get allItems(): Iterable<IThing> {
-        const res = []
+    get allTitles(): Iterable<ThingTitle> {
+        const items = []
         for (const lender of this._lenders) {
             for (const item of lender.items) {
-                res.push(item)
+                items.push(item)
             }
         }
-        return res
-    }
 
-    get availableItems(): Iterable<IThing> {
-        const res = []
-        for (const item of this.allItems) {
-            if (item.status === ThingStatus.READY) {
-                res.push(item)
-            }
-        }
-        return res
+        return this.getTitlesFromItems(items)
+
     }
 
     private getOwnerOfItem(item: IThing): IndividualDistributedLender| null {
@@ -66,10 +52,6 @@ export class DistributedLibrary implements ILibrary {
             }
         }
         return null
-    }
-
-    private makeLoanId(): string{
-        return "guid"
     }
 
     borrow(item: IThing, borrower: IBorrower, until: Date): ILoan {

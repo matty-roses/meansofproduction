@@ -1,5 +1,5 @@
-import {PersonName} from "../valueItems/personName"
-import {EmailAddress} from "../valueItems/emailAddress";
+import {PersonName} from "../../valueItems/personName"
+import {EmailAddress} from "../../valueItems/emailAddress";
 
 export class Person {
     public readonly id: string
