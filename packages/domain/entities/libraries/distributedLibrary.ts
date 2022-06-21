@@ -9,13 +9,14 @@ import {IndividualDistributedLender} from "../lenders/individualDistributedLende
 import {InvalidThingStatusToBorrow} from "../../valueItems/exceptions";
 import {ThingTitle} from "../../valueItems/thingTitle";
 import {BaseLibrary} from "./baseLibrary";
+import {IWaitingListFactory} from "../../factories/IWaitingListFactory";
 
 export class DistributedLibrary extends BaseLibrary{
     public readonly maxFees: IMoney
     private readonly _lenders: IndividualDistributedLender[]
 
-    constructor(name: string, maxFees: IMoney, lenders: IndividualDistributedLender[]) {
-        super(name, [])
+    constructor(name: string, maxFees: IMoney, lenders: IndividualDistributedLender[], waitingListFactory: IWaitingListFactory) {
+        super(name, [], waitingListFactory)
         this.maxFees = maxFees
 
         this._lenders = lenders
