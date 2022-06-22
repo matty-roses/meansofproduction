@@ -1,15 +1,20 @@
 import {IBorrower} from "../people/IBorrower";
 import {IMoney} from "../../valueItems/money/IMoney";
+import {ThingTitle} from "../../valueItems/thingTitle";
+import {IWaitingListFactory} from "../../factories/IWaitingListFactory";
 
 
 export interface IWaitingList{
+    title: ThingTitle;
     next() : IBorrower;
-    isOnList(borrower: IBorrower): boolean;
-    remove(borrower: IBorrower): void;
+    add(borrower: IBorrower): IWaitingList
+    isOnList(borrower: IBorrower): boolean
+    remove(borrower: IBorrower): void
 }
 
 export interface IAuctionBid{
-    readonly bidder: IBorrower;
+    readonly madeBy: IBorrower;
+    readonly madeFor: IBorrower;
     readonly amount: IMoney;
 }
 
