@@ -58,16 +58,9 @@
   <p>Lenders - somebody with an item to lend.</p>
   <p>Libraries - organizations which connect Borrowers and Lenders, and prevent abuses for the general good.  Depending on the type of library, a library may also be a lender.
     Libraries create Loans of items, and also determine if Borrowers remain in good standing, if items are returned satisfactorily, etc.</p>
-  <h2 id="parts">Parts</h2>
-  <ul>
-    <li>meansofproduction - domain objects that define the business logic and storage functions</li>
-    <li>graphql_server - GraphQL API to support the front end</li>
-    <li>web_client - browser based way to lend and borrow</li>
-    <li>phone_client - ReactNative client for interacting</li>
-  </ul>
-  <h2 id="current-domain-objects">Current Domain Objects</h2>
+  <h2 id="current-domain-models">Current Domain Models</h2>
   <h3 id="thing">Thing</h3>
-  <p>something to be lent out.  Can have a <em>borrow cost</em>, which reflects a relative worth of the item, to help even out lending if needed</p>
+  <p>something to be lent out</p>
   <h3 id="lender">Lender</h3>
   <p>A person or entity that owns an item.  They might also be responsible for evaluating condition on return.</p>
   <h3 id="borrower">Borrower</h3>
@@ -79,13 +72,13 @@
   <h3 id="library">Library</h3>
   <p>A library might represent either a library organization, or a distributed group of Lenders</p>
   <p>Libraries will also be able to long term allow members from other libraries, presenting an easy way to offer a unified platform for existing lenders</p>
-  <p>Libraries can enforce policies on behalf of their membership, such as maximum items to borrow at one time, fees or points for non-returned items, etc.</p>
+  <p>Libraries can enforce policies on behalf of their membership, such as maximum items to borrow at one time, fees for non-returned items, etc.</p>
   <p>Long term integration with voting platforms for libraries is a good move to ensure democratic control of libraries.</p>
   <p>Libraries can optionally take Donations, which transfers the location to a library.</p>
   <p>Libraries create Loans of Items.</p>
-  <h2 id="tool-links">Tool links</h2>
-  <p><a href="https://medium.com/@NiGhTTraX/making-typescript-monorepos-play-nice-with-other-tools-a8d197fdc680">https://medium.com/@NiGhTTraX/making-typescript-monorepos-play-nice-with-other-tools-a8d197fdc680</a></p>
       </div>
+      </div>
+    <div class="row">
     <div class="col">
   <h1 id="faqs-about-distributed-libraries">FAQs about distributed libraries</h1>
   <h2 id="who-owns-the-items-">Who owns the items?</h2>
@@ -105,58 +98,13 @@
       </div>
     <div class="col">
       <h1 id="long-term-org-ideas">Long Term Org ideas</h1>
-      <h2 id="daoify-this-organization">DAOify this organization</h2>
-      <h3 id="tokens-would-be-granted-for">Tokens would be granted for</h3>
-      <ul>
-        <li>providing identify verification for self or others</li>
-        <li>this can also aid in modelling lending risk long term</li>
-        <li>lending items</li>
-        <li>borrowing items and returning them</li>
-        <li>donations of funds</li>
-        <li>software or library work</li>
-      </ul>
-      <h3 id="tokens-will-be-required-for">Tokens will be required for</h3>
-      <ul>
-        <li>voting on policy (non-consuming)</li>
-        <li>late-fees or damages (for the latter, conversion to ETH or $ is how the library can offer insurance)</li>
-      </ul>
-      <h3 id="funds-can-withdraw-for">Funds can withdraw for</h3>
-      <ul>
-        <li>payment of hosting</li>
-        <li>capital investments (library org can run its own networks clusters)</li>
-      </ul>
       <h2 id="onboarding-for-existing-libraries">Onboarding for existing libraries</h2>
       <p>Many local or free libraries exist.  We should make it so not only can our software support their needs - but that we can offer an &quot;all-library&quot; view of items available anywhere a member has membership</p>
-      <h2 id="faircoin-integration">Faircoin integration</h2>
-      <p>For fees perhaps?</p>
-          <a href="https://fair-coin.org/">FairCoin</a>
       <h2 id="insurance-of-distributed-lenders">Insurance of distributed lenders</h2>
       <h3 id="risk-modeling-of-borrowers">Risk modeling of borrowers</h3>
       <h2 id="large-scale-distributed-kubernetes-cluster">Large scale distributed Kubernetes cluster</h2>
       <p>This will run over WireGuard VPN - we&#39;ll require 2 clusters.  One is to provide the VPN to the public, and also act as the general admin (able to approve or revoke general VPN certs for who can join the cluster).  The second uses the VPN provided by the first, and allows anyone to join their computer to a cluster to provide cloud resources and give a crowd sourced alternative to AWS and the like.</p>
   </div>
-    </div>
-    <div class="row">
-      <h1>Possible currency rules</h1>
-      <div class="col">
-        <h2>Who is an entity for this</h2>
-        An entity is any person, or outside the library a corporation or other fictitious person.
-
-        Anyone who is more than a 5% holder of equity in a corporation should be considered to share debts of that, to avoid LLC hiding.
-
-        <h2>Ledgers</h2>
-        <ul>Capital</ul>
-        <ul>Labor</ul>
-      </div>
-      <div class ="col">
-        <h2>Capital inflows</h2>
-        Any donation to the library should be credited with the fair value within the capital ledger.  This enables
-
-        <h2>Capital outflows</h2>
-        Any purchase by the library should be considered a debit on the capital ledger for whatever entity the items are purchased for.
-        That entity (and any major owners) will be prevented from using the library until this debit is paid off or compensated.  This ensures that
-        the library can avoid having net capital drained from it by trading partners over the long term by for-profit entities, who sell items to the library but then use them.
-      </div>
     </div>
   </div>
 </div>
