@@ -1,13 +1,13 @@
-import {IWaitingList} from "../entities/libraries/IWaitingList";
-import {IBorrower} from "../entities/people/IBorrower";
-import {ThingTitle} from "../valueItems/thingTitle";
+import {IWaitingList} from "./IWaitingList";
+import {IBorrower} from "../people/IBorrower";
+import {IThing} from "../things/IThing";
 
 export class FirstComeFirstServeWaitingList implements IWaitingList{
     private readonly members: IBorrower[]
-    readonly title: ThingTitle;
+    readonly item: IThing;
 
-    constructor(title: ThingTitle){
-        this.title = title
+    constructor(item: IThing){
+        this.item = item
         this.members = []
     }
 

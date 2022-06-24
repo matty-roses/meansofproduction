@@ -3,11 +3,13 @@ import {IThing} from "../things/IThing";
 import {ILoan} from "../loans/ILoan";
 import {ThingTitle} from "../../valueItems/thingTitle";
 import {IWaitingList} from "./IWaitingList";
+import {Person} from "../people/person";
 
 export interface ILibrary {
     readonly name: string
     readonly allTitles: Iterable<ThingTitle>
     readonly borrowers: Iterable<IBorrower>
+    readonly administrator: Person
 
     canBorrow(borrower: IBorrower): boolean
 
@@ -16,4 +18,5 @@ export interface ILibrary {
     return(loan: ILoan): ILoan
 
     reserveTitle(title: ThingTitle, borrower: IBorrower) : IWaitingList
+    reserveItem(item: IThing, borrower: IBorrower): IWaitingList
 }

@@ -1,11 +1,10 @@
 import {IBorrower} from "../people/IBorrower";
 import {IMoney} from "../../valueItems/money/IMoney";
-import {ThingTitle} from "../../valueItems/thingTitle";
-import {IWaitingListFactory} from "../../factories/IWaitingListFactory";
+import {IThing} from "../things/IThing";
 
 
 export interface IWaitingList{
-    title: ThingTitle;
+    item: IThing;
     next() : IBorrower;
     add(borrower: IBorrower): IWaitingList
     isOnList(borrower: IBorrower): boolean
