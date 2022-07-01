@@ -13,7 +13,6 @@ export abstract class BaseLibrary implements ILibrary{
     readonly waitingListFactory: IWaitingListFactory
     readonly waitingListsByItemId: Map<string, IWaitingList>
     readonly administrator: Person;
-    readonly availableTitles: Iterable<ThingTitle>;
 
     protected constructor(name: string, administrator: Person, borrowers: Iterable<IBorrower>, waitingListFactory: IWaitingListFactory) {
         this.name = name;
@@ -52,7 +51,7 @@ export abstract class BaseLibrary implements ILibrary{
     }
 
     reserveItem(item: IThing, borrower: IBorrower): IWaitingList {
-        let list: IWaitingList | undefined = this.waitingListsByItemId[item.id]
+        let list: IWaitingList | undefined = this.waitingListsByItemId.get(item.id)
         if(!list){
             list = this.waitingListFactory.createList(item)
             this.waitingListsByItemId.set(item.id, list)
@@ -62,6 +61,7 @@ export abstract class BaseLibrary implements ILibrary{
     }
 
     abstract get allTitles(): Iterable<ThingTitle>
+    abstract get availableTitles(): Iterable<ThingTitle>
 
     abstract borrow(item: IThing, borrower: IBorrower, until: Date): ILoan
 

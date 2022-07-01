@@ -28,6 +28,9 @@ export class WaitingList implements IWaitingList {
         }
 
         const item = this.queue.shift()
+        if(!item){
+            return null
+        }
         return item
     }
 }

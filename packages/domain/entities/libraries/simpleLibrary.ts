@@ -25,7 +25,7 @@ export class SimpleLibrary extends BaseLibrary implements ILender{
     }
 
     borrow(item: IThing, borrower: IBorrower, until: Date): ILoan {
-        // check if avaialble
+        // check if available
         if(item.status !== ThingStatus.READY){
             throw new Error();
         }
@@ -60,6 +60,12 @@ export class SimpleLibrary extends BaseLibrary implements ILender{
 
     get allTitles(): Iterable<ThingTitle> {
         return this.getTitlesFromItems(this.items)
+    }
+
+    get availableTitles(): Iterable<ThingTitle>{
+        const availableItems = Array.from(this.items).filter(i => i.status === ThingStatus.READY)
+
+        return this.getTitlesFromItems(availableItems)
     }
 
     get id(): string{
