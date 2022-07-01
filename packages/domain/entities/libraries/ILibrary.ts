@@ -10,6 +10,7 @@ export interface ILibrary {
     readonly allTitles: Iterable<ThingTitle>
     readonly borrowers: Iterable<IBorrower>
     readonly administrator: Person
+    readonly availableTitles: Iterable<ThingTitle>
 
     canBorrow(borrower: IBorrower): boolean
 
@@ -17,6 +18,6 @@ export interface ILibrary {
 
     return(loan: ILoan): ILoan
 
-    reserveTitle(title: ThingTitle, borrower: IBorrower) : IWaitingList
+    // reserve the next available item
     reserveItem(item: IThing, borrower: IBorrower): IWaitingList
 }

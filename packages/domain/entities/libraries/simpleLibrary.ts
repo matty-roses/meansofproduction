@@ -9,6 +9,7 @@ import {LoanStatus} from "../../valueItems/loanStatus";
 import {Location} from "../../valueItems/location";
 import {ILender} from "../lenders/ILender";
 import {IWaitingListFactory} from "../../factories/IWaitingListFactory";
+import {Person} from "../people/person";
 
 
 // library which also lends items from a simple, single, location
@@ -16,9 +17,9 @@ export class SimpleLibrary extends BaseLibrary implements ILender{
     readonly items: Iterable<IThing>
     readonly location: Location
 
-    constructor(name: string, location: Location, items: Iterable<IThing>, borrowers: Iterable<IBorrower>,
+    constructor(name: string, admin: Person, location: Location, items: Iterable<IThing>, borrowers: Iterable<IBorrower>,
                 waitingListFactory: IWaitingListFactory) {
-        super(name, borrowers, waitingListFactory);
+        super(name, admin, borrowers, waitingListFactory);
         this.items = items
         this.location = location
     }

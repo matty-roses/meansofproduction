@@ -1,9 +1,8 @@
 import {IWaitingList} from "../entities/libraries/IWaitingList";
-import {IBorrower} from "../entities/people/IBorrower";
-import {ThingTitle} from "../valueItems/thingTitle";
+import {Thing} from "../entities/things/thing";
 
 
 export interface IWaitingListFactory{
     readonly supportsAuctions: boolean
-    createList(title: ThingTitle): IWaitingList
+    createList(item: Thing): IWaitingList
 }

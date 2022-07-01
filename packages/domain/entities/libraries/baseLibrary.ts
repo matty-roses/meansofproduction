@@ -5,21 +5,25 @@ import {ILoan} from "../loans/ILoan";
 import {ThingTitle} from "../../valueItems/thingTitle";
 import {IWaitingListFactory} from "../../factories/IWaitingListFactory";
 import {IWaitingList} from "./IWaitingList";
+import {Person} from "../people/person";
 
 export abstract class BaseLibrary implements ILibrary{
     private readonly _borrowers:IBorrower[]
     readonly name: string;
     readonly waitingListFactory: IWaitingListFactory
-    readonly waitingListsByTitle: Map<string, IWaitingList>
+    readonly waitingListsByItemId: Map<string, IWaitingList>
+    readonly administrator: Person;
+    readonly availableTitles: Iterable<ThingTitle>;
 
-    protected constructor(name: string, borrowers: Iterable<IBorrower>, waitingListFactory: IWaitingListFactory) {
+    protected constructor(name: string, administrator: Person, borrowers: Iterable<IBorrower>, waitingListFactory: IWaitingListFactory) {
         this.name = name;
         this.waitingListFactory = waitingListFactory
         this._borrowers = []
+        this.administrator = administrator
         for (const b of borrowers){
             this._borrowers.push(b)
         }
-        this.waitingListsByTitle = new Map<string, IWaitingList>()
+        this.waitingListsByItemId= new Map<string, IWaitingList>()
     }
 
     protected makeLoanId(): string{
@@ -47,11 +51,11 @@ export abstract class BaseLibrary implements ILibrary{
         return borrower
     }
 
-    public reserveTitle(title: ThingTitle, borrower: IBorrower): IWaitingList {
-        let list: IWaitingList | undefined = this.waitingListsByTitle.get(title.hash)
+    reserveItem(item: IThing, borrower: IBorrower): IWaitingList {
+        let list: IWaitingList | undefined = this.waitingListsByItemId[item.id]
         if(!list){
-            list = this.waitingListFactory.createList(title)
-            this.waitingListsByTitle.set(title.hash, list)
+            list = this.waitingListFactory.createList(item)
+            this.waitingListsByItemId.set(item.id, list)
         }
         list.add(borrower)
         return list

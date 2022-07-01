@@ -29,3 +29,7 @@ export class InvalidThingStatusToBorrow extends Error{
         this.status = status
     }
 }
+
+export class DifferentTypesOfMoney extends Error{
+
+}
