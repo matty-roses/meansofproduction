@@ -67,6 +67,9 @@ export abstract class BaseLibrary implements ILibrary{
 
     abstract canBorrow(borrower: IBorrower): boolean
 
-    abstract return(loan:ILoan): ILoan
+    abstract startReturn(loan:ILoan): ILoan
+    abstract finishReturn(loan: ILoan): ILoan
+
+    abstract markAsDamaged(item: IThing): IThing;
 
 }

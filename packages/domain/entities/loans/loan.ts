@@ -44,15 +44,22 @@ export class Loan implements ILoan {
         return this._status
     }
 
-    public startReturn() {
-        this.lender.startReturn(this)
+    public startReturn(): ILoan {
         this._status = LoanStatus.RETURN_STARTED
         this._dateReturned = new Date()
+        return this
     }
 
-    public markItemDamaged() {
-        this.lender.finishReturn(this)
-        this._status = LoanStatus.RETURNED_DAMAGED
-        this.item.status = ThingStatus.DAMAGED
+    public finishReturn(thingStatus: ThingStatus): ILoan {
+        if(thingStatus == ThingStatus.DAMAGED){
+            this._status = LoanStatus.RETURNED_DAMAGED
+        } else{
+            this._status = LoanStatus.RETURNED
+        }
+        if(this._dateReturned > this.dueDate){
+            this._status = LoanStatus.OVERDUE
+        }
+        this.item.status = thingStatus
+        return this
     }
 }

@@ -16,7 +16,10 @@ export interface ILibrary {
 
     borrow(item: IThing, borrower: IBorrower, until: Date): ILoan
 
-    return(loan: ILoan): ILoan
+    startReturn(loan: ILoan): ILoan
+    finishReturn(loan: ILoan): ILoan
+
+    markAsDamaged(item: IThing): IThing
 
     // reserve the next available item
     reserveItem(item: IThing, borrower: IBorrower): IWaitingList

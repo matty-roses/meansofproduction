@@ -5,11 +5,11 @@ import {BaseLibrary} from "./baseLibrary"
 import {ThingTitle} from "../../valueItems/thingTitle";
 import {ThingStatus} from "../../valueItems/thingStatus";
 import {Loan} from "../loans/loan";
-import {LoanStatus} from "../../valueItems/loanStatus";
 import {Location} from "../../valueItems/location";
 import {ILender} from "../lenders/ILender";
 import {IWaitingListFactory} from "../../factories/IWaitingListFactory";
 import {Person} from "../people/person";
+import {LoanStatus} from "../../valueItems/loanStatus";
 
 
 // library which also lends items from a simple, single, location
@@ -53,11 +53,6 @@ export class SimpleLibrary extends BaseLibrary implements ILender{
         return false;
     }
 
-    return(loan: ILoan): ILoan {
-        loan.startReturn()
-        return loan
-    }
-
     get allTitles(): Iterable<ThingTitle> {
         return this.getTitlesFromItems(this.items)
     }
@@ -72,11 +67,27 @@ export class SimpleLibrary extends BaseLibrary implements ILender{
         return this.name
     }
 
-    finishReturn(loan: ILoan): ILoan {
-        return loan;
+    public markAsDamaged(item: IThing): IThing {
+        item.status = ThingStatus.DAMAGED
+        return item
     }
 
-    startReturn(loan: ILoan): ILoan {
-        return this.return(loan)
+
+    public startReturn(loan: ILoan): ILoan {
+        return loan.startReturn()
+    }
+
+    public finishReturn(loan: ILoan): ILoan {
+        const returnedLoad = loan.finishReturn(loan.item.status)
+        if(returnedLoad.item.status == ThingStatus.DAMAGED){
+            // apply the fees
+
+        }
+
+        if(returnedLoad.status == LoanStatus.OVERDUE){
+            // calculate the late fee and apply
+        }
+
+        return returnedLoad
     }
 }

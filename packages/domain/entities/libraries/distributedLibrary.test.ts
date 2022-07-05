@@ -6,7 +6,6 @@ import {Borrower} from "../people/borrower";
 import {Loan} from "../loans/loan";
 import {Location} from "../../valueItems/location";
 import {DistributedLibrary} from "../libraries/distributedLibrary";
-import {NoMoney} from "../../valueItems/money/NoMoney";
 import {IndividualDistributedLender} from "../lenders/individualDistributedLender";
 import {EmailAddress} from "../../valueItems/emailAddress";
 import {Person} from "../people/person";
