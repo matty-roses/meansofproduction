@@ -10,13 +10,15 @@ import {InvalidThingStatusToBorrow} from "../../valueItems/exceptions";
 import {ThingTitle} from "../../valueItems/thingTitle";
 import {BaseLibrary} from "./baseLibrary";
 import {IWaitingListFactory} from "../../factories/IWaitingListFactory";
+import {Person} from "../people/person";
+import {NotImplemented} from "../../valueItems/exceptions"
 
 export class DistributedLibrary extends BaseLibrary{
     public readonly maxFees: IMoney
     private readonly _lenders: IndividualDistributedLender[]
 
-    constructor(name: string, maxFees: IMoney, lenders: IndividualDistributedLender[], waitingListFactory: IWaitingListFactory) {
-        super(name, [], waitingListFactory)
+    constructor(name: string, administrator: Person, maxFees: IMoney, lenders: IndividualDistributedLender[], waitingListFactory: IWaitingListFactory) {
+        super(name,  administrator,[], waitingListFactory)
         this.maxFees = maxFees
 
         this._lenders = lenders
@@ -74,10 +76,19 @@ export class DistributedLibrary extends BaseLibrary{
         )
     }
 
-    return(loan: ILoan): ILoan {
-        // ping out to the borrower to start the return process
-        loan.startReturn()
+    get availableTitles(): Iterable<ThingTitle> {
+        throw new NotImplemented()
+    }
 
-        return loan
+    finishReturn(loan: ILoan): ILoan {
+        throw new NotImplemented()
+    }
+
+    markAsDamaged(item: IThing): IThing {
+        throw new NotImplemented()
+    }
+
+    startReturn(loan: ILoan): ILoan {
+        throw new NotImplemented()
     }
 }

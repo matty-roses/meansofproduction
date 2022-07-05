@@ -24,7 +24,7 @@ export class USDMoney implements IMoney{
     }
 
     add(other: IMoney): IMoney {
-        if(! other instanceof USDMoney){
+        if(!(other instanceof USDMoney)){
             throw new DifferentTypesOfMoney();
         }
         return new USDMoney(this.amount + other.amount)

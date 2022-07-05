@@ -20,26 +20,6 @@ const testTitle = new ThingTitle("test")
 const testLender = new IndividualDistributedLender("lender", new Person("test", new PersonName("Testy", "McTesterson")),[], [])
 
 describe("Loan", () => {
-    it('should change item to damaged when returned damaged', () => {
-        const borrower = new Borrower("1", testPerson, testLib)
-        const thing = new Thing("test", testTitle, loc, testLender, ThingStatus.READY, "", [], null, [])
-
-        const loan = new Loan(
-            "loanId",
-            thing,
-            borrower,
-            new Date(2020,12,23)
-        )
-
-        expect(loan.active).toEqual(true)
-
-        // act
-        loan.markItemDamaged()
-
-        expect(loan.item.status).toEqual(ThingStatus.DAMAGED)
-        expect(loan.status).toEqual(LoanStatus.RETURNED_DAMAGED)
-    })
-
     it('should change item to ready when loan is ready', () => {
         const borrower = new Borrower("1", testPerson, testLib)
         const thing = new Thing("test", testTitle, loc, testLender, ThingStatus.READY, "", [], null, [])

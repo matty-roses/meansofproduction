@@ -10,6 +10,8 @@ import {IndividualDistributedLender} from "../lenders/individualDistributedLende
 import {EmailAddress} from "../../valueItems/emailAddress";
 import {Person} from "../people/person";
 import {ThingTitle} from "../../valueItems/thingTitle";
+import {USDMoney} from "../../valueItems/money/USDMoney";
+import {WaitingListFactory} from "../../factories/waitingListFactory";
 
 const loc =  new Location(40.6501, -73.94958)
 
@@ -23,7 +25,7 @@ describe("DistributedLibrary", () => {
         const lender = new IndividualDistributedLender("testLender", testPerson, [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(
-            "testLib", new NoMoney(), [lender]
+            "testLib", testPerson, new USDMoney(0), [lender], new WaitingListFactory()
         )
         const borrower = new Borrower("1",testPerson, underTest)
         underTest.addBorrower(borrower)
@@ -36,7 +38,7 @@ describe("DistributedLibrary", () => {
         const lender = new IndividualDistributedLender("testLender", testPerson, [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(
-            "testLib", new NoMoney(), [lender]
+            "testLib", testPerson, new USDMoney(0), [lender], new WaitingListFactory()
         )
         const borrower = new Borrower("1",testPerson, underTest)
         underTest.addBorrower(borrower)
@@ -55,13 +57,12 @@ describe("DistributedLibrary", () => {
         const lender = new IndividualDistributedLender("testLender", testPerson, [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(
-            "testLib", new NoMoney(), [lender]
+            "testLib", testPerson, new USDMoney(0), [lender], new WaitingListFactory()
         )
         const borrower = new Borrower("1",testPerson, underTest)
         underTest.addBorrower(borrower)
         const loan = new Loan("loanId", thing, borrower, new Date())
-        const updated = underTest.return(loan)
 
-        expect(updated.active).not.toBeTruthy()
+        // action needed!
     })
 })

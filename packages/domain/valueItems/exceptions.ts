@@ -33,3 +33,9 @@ export class InvalidThingStatusToBorrow extends Error{
 export class DifferentTypesOfMoney extends Error{
 
 }
+
+export class NotImplemented extends Error{
+    constructor() {
+        super("Not Implemented");
+    }
+}
