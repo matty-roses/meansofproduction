@@ -1,7 +1,7 @@
-export * from "./entities/person";
-export * from "./entities/borrower";
-export * from "./entities/thing";
-export * from "./entities/loan";
+export * from "./entities/people/person";
+export * from "./entities/people/borrower";
+export * from "./entities/things/thing";
+export * from "./entities/loans/loan";
 
 export * from "./valueItems/thingStatus";
 
