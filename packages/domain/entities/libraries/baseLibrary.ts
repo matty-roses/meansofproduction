@@ -4,7 +4,7 @@ import {IBorrower} from "../people/IBorrower";
 import {ILoan} from "../loans/ILoan";
 import {ThingTitle} from "../../valueItems/thingTitle";
 import {IWaitingListFactory} from "../../factories/IWaitingListFactory";
-import {IWaitingList} from "./IWaitingList";
+import {IWaitingList} from "../waitingLists/IWaitingList";
 import {Person} from "../people/person";
 
 export abstract class BaseLibrary implements ILibrary{

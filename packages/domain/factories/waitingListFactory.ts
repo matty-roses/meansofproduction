@@ -1,7 +1,7 @@
 import {IWaitingListFactory} from "./IWaitingListFactory";
 import {Thing} from "../entities/things/thing";
-import {IWaitingList} from "../entities/libraries/IWaitingList";
-import {WaitingList} from "../entities/libraries/waitingList";
+import {IWaitingList} from "../entities/waitingLists/IWaitingList";
+import {WaitingList} from "../entities/waitingLists/waitingList";
 
 export class WaitingListFactory implements IWaitingListFactory{
     readonly supportsAuctions: boolean;

@@ -2,7 +2,7 @@ import {IBorrower} from "../people/IBorrower";
 import {IThing} from "../things/IThing";
 import {ILoan} from "../loans/ILoan";
 import {ThingTitle} from "../../valueItems/thingTitle";
-import {IWaitingList} from "./IWaitingList";
+import {IWaitingList} from "../waitingLists/IWaitingList";
 import {Person} from "../people/person";
 
 export interface ILibrary {

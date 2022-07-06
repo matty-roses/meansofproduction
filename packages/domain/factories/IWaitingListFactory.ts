@@ -1,4 +1,4 @@
-import {IWaitingList} from "../entities/libraries/IWaitingList";
+import {IWaitingList} from "../entities/waitingLists/IWaitingList";
 import {IThing} from "../entities/things/IThing";
 
 
