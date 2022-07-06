@@ -5,10 +5,11 @@ import {BaseLibrary} from "./baseLibrary"
 import {ThingTitle} from "../../valueItems/thingTitle";
 import {ThingStatus} from "../../valueItems/thingStatus";
 import {Loan} from "../loans/loan";
-import {LoanStatus} from "../../valueItems/loanStatus";
 import {Location} from "../../valueItems/location";
 import {ILender} from "../lenders/ILender";
 import {IWaitingListFactory} from "../../factories/IWaitingListFactory";
+import {Person} from "../people/person";
+import {LoanStatus} from "../../valueItems/loanStatus";
 
 
 // library which also lends items from a simple, single, location
@@ -16,15 +17,15 @@ export class SimpleLibrary extends BaseLibrary implements ILender{
     readonly items: Iterable<IThing>
     readonly location: Location
 
-    constructor(name: string, location: Location, items: Iterable<IThing>, borrowers: Iterable<IBorrower>,
+    constructor(name: string, admin: Person, location: Location, items: Iterable<IThing>, borrowers: Iterable<IBorrower>,
                 waitingListFactory: IWaitingListFactory) {
-        super(name, borrowers, waitingListFactory);
+        super(name, admin, borrowers, waitingListFactory);
         this.items = items
         this.location = location
     }
 
     borrow(item: IThing, borrower: IBorrower, until: Date): ILoan {
-        // check if avaialble
+        // check if available
         if(item.status !== ThingStatus.READY){
             throw new Error();
         }
@@ -52,24 +53,41 @@ export class SimpleLibrary extends BaseLibrary implements ILender{
         return false;
     }
 
-    return(loan: ILoan): ILoan {
-        loan.startReturn()
-        return loan
-    }
-
     get allTitles(): Iterable<ThingTitle> {
         return this.getTitlesFromItems(this.items)
+    }
+
+    get availableTitles(): Iterable<ThingTitle>{
+        const availableItems = Array.from(this.items).filter(i => i.status === ThingStatus.READY)
+
+        return this.getTitlesFromItems(availableItems)
     }
 
     get id(): string{
         return this.name
     }
 
-    finishReturn(loan: ILoan): ILoan {
-        return loan;
+    public markAsDamaged(item: IThing): IThing {
+        item.status = ThingStatus.DAMAGED
+        return item
     }
 
-    startReturn(loan: ILoan): ILoan {
-        return this.return(loan)
+
+    public startReturn(loan: ILoan): ILoan {
+        return loan.startReturn()
+    }
+
+    public finishReturn(loan: ILoan): ILoan {
+        const returnedLoad = loan.finishReturn(loan.item.status)
+        if(returnedLoad.item.status == ThingStatus.DAMAGED){
+            // apply the fees
+
+        }
+
+        if(returnedLoad.status == LoanStatus.OVERDUE){
+            // calculate the late fee and apply
+        }
+
+        return returnedLoad
     }
 }
