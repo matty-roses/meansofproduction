@@ -13,7 +13,7 @@ export interface IThing {
     storageLocation: Location;
     imageUrls: string[];
     owner: ILender;
-    insuredAmount: IMoney | null;
+    purchaseCost: IMoney | null;
     requiredBorrowerFlags: BorrowerVerificationFlags[];
     status: ThingStatus;
 }
