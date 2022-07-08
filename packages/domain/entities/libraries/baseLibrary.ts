@@ -80,11 +80,19 @@ export abstract class BaseLibrary implements ILibrary{
         return "guid"
     }
 
-    private compareLoans(a: ILoan, b: ILoan): number {
+    private static compareLoans(a: ILoan, b: ILoan): number {
         if(a.dueDate && b.dueDate){
             return b.dueDate > a.dueDate ? 1 : -1
         }
 
+        // consider a null due date to be infinite
+        if(b.dueDate){
+            return 1
+        }
+
+        if(a.dueDate){
+            return -1
+        }
         return 0
     }
 
@@ -92,7 +100,7 @@ export abstract class BaseLibrary implements ILibrary{
         // get loans for the item
         const itemLoans = this._loans
             .filter(l => l.item.id == item.id)
-            .sort(this.compareLoans)
+            .sort(BaseLibrary.compareLoans)
 
         // find how many times consecutively this borrower has borrowed this item
         let numPreviousLoans = 0
