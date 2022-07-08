@@ -30,4 +30,12 @@ export class USDMoney implements IMoney{
         return new USDMoney(this.amount + other.amount)
     }
 
+    any(): boolean {
+        return this.amount > 0
+    }
+
+    multiply(amount: number): IMoney {
+        return new USDMoney(this.amount * amount)
+    }
+
 }

@@ -14,12 +14,10 @@ import {Person} from "../people/person";
 import {NotImplemented} from "../../valueItems/exceptions"
 
 export class DistributedLibrary extends BaseLibrary{
-    public readonly maxFees: IMoney
     private readonly _lenders: IndividualDistributedLender[]
 
-    constructor(name: string, administrator: Person, maxFees: IMoney, lenders: IndividualDistributedLender[], waitingListFactory: IWaitingListFactory) {
-        super(name,  administrator,[], waitingListFactory)
-        this.maxFees = maxFees
+    constructor(name: string, administrator: Person, maxFees: IMoney, lenders: IndividualDistributedLender[], waitingListFactory: IWaitingListFactory, loans: Iterable<ILoan>) {
+        super(name,  administrator,[], waitingListFactory, maxFees, loans)
 
         this._lenders = lenders
     }

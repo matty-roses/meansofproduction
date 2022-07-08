@@ -25,7 +25,7 @@ describe("DistributedLibrary", () => {
         const lender = new IndividualDistributedLender("testLender", testPerson, [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(
-            "testLib", testPerson, new USDMoney(0), [lender], new WaitingListFactory()
+            "testLib", testPerson, new USDMoney(0), [lender], new WaitingListFactory(), []
         )
         const borrower = new Borrower("1",testPerson, underTest)
         underTest.addBorrower(borrower)
@@ -38,7 +38,7 @@ describe("DistributedLibrary", () => {
         const lender = new IndividualDistributedLender("testLender", testPerson, [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(
-            "testLib", testPerson, new USDMoney(0), [lender], new WaitingListFactory()
+            "testLib", testPerson, new USDMoney(0), [lender], new WaitingListFactory(), []
         )
         const borrower = new Borrower("1",testPerson, underTest)
         underTest.addBorrower(borrower)
@@ -57,7 +57,7 @@ describe("DistributedLibrary", () => {
         const lender = new IndividualDistributedLender("testLender", testPerson, [new EmailAddress("test@test.com")], [thing])
 
         const underTest = new DistributedLibrary(
-            "testLib", testPerson, new USDMoney(0), [lender], new WaitingListFactory()
+            "testLib", testPerson, new USDMoney(0), [lender], new WaitingListFactory(), []
         )
         const borrower = new Borrower("1",testPerson, underTest)
         underTest.addBorrower(borrower)

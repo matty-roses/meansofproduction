@@ -10,11 +10,12 @@ import {SimpleLibrary} from "../libraries/simpleLibrary";
 import {ThingTitle} from "../../valueItems/thingTitle";
 import {IndividualDistributedLender} from "../lenders/individualDistributedLender";
 import {WaitingListFactory} from "../../factories/waitingListFactory";
+import {USDMoney} from "../../valueItems/money/USDMoney";
 
 const loc = new Location(40.6501, -73.94958)
 
 const testPerson = new Person("bob", new PersonName("Doug", "Jones"))
-const testLib = new SimpleLibrary("testLibrary", testPerson, new Location(0, 0), [], [], new WaitingListFactory());
+const testLib = new SimpleLibrary("testLibrary", testPerson, new Location(0, 0), [], [], new WaitingListFactory(), new USDMoney(0), []);
 
 const testTitle = new ThingTitle("test")
 const testLender = new IndividualDistributedLender("lender", new Person("test", new PersonName("Testy", "McTesterson")),[], [])

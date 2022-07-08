@@ -80,16 +80,23 @@ export abstract class BaseLibrary implements ILibrary{
         return "guid"
     }
 
+    private compareLoans(a: ILoan, b: ILoan): number {
+        if(a.dueDate && b.dueDate){
+            return b.dueDate > a.dueDate ? 1 : -1
+        }
+
+        return 0
+    }
+
     protected getBidForCost(item: IThing, borrower: IBorrower, amountToPay: IMoney): IMoney{
         // get loans for the item
-        const itemLoans = this._loans.filter(l => l.item.id == item.id)
-
-        // arrange them retroactively
-        const backwards = itemLoans.sort((a, b )=> b.dueDate > a.dueDate ? 1: -1)
+        const itemLoans = this._loans
+            .filter(l => l.item.id == item.id)
+            .sort(this.compareLoans)
 
         // find how many times consecutively this borrower has borrowed this item
         let numPreviousLoans = 0
-        for(const l of backwards){
+        for(const l of itemLoans){
             if(l.borrower.id == borrower.id){
                 numPreviousLoans += 1
             } else {
