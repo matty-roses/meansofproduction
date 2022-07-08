@@ -14,6 +14,7 @@ export interface ILoan {
     readonly returnLocation: Location
     readonly active: boolean
     readonly status: LoanStatus
+    readonly permanentLoan: boolean
 
     startReturn(): ILoan
     finishReturn(thingStatus: ThingStatus): ILoan

@@ -43,12 +43,11 @@ export class Thing implements IThing {
         this.requiredBorrowerFlags = requiredBorrowerFlags
     }
 
-    get status(): ThingStatus {
+    public get status(): ThingStatus {
         return this._status
     }
 
     public set status(status: ThingStatus) {
         this._status = status
     }
-
 }
