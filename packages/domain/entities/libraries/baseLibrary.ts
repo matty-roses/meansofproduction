@@ -85,6 +85,14 @@ export abstract class BaseLibrary implements ILibrary{
             return b.dueDate > a.dueDate ? 1 : -1
         }
 
+        // consider a null due date to be infinite
+        if(b.dueDate){
+            return 1
+        }
+
+        if(a.dueDate){
+            return -1
+        }
         return 0
     }
 
