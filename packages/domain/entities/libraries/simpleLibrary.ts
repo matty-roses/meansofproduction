@@ -72,7 +72,6 @@ export class SimpleLibrary extends BaseLibrary implements ILender{
         return item
     }
 
-
     public startReturn(loan: ILoan): ILoan {
         return loan.startReturn()
     }
