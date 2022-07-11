@@ -29,3 +29,13 @@ export class InvalidThingStatusToBorrow extends Error{
         this.status = status
     }
 }
+
+export class DifferentTypesOfMoney extends Error{
+
+}
+
+export class NotImplemented extends Error{
+    constructor() {
+        super("Not Implemented");
+    }
+}

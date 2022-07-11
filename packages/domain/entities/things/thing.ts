@@ -16,7 +16,7 @@ export class Thing implements IThing {
     readonly imageUrls: string[]
     private _status: ThingStatus = ThingStatus.READY
     readonly owner: ILender
-    readonly insuredAmount: IMoney | null = null
+    readonly purchaseCost: IMoney | null = null
     readonly requiredBorrowerFlags: BorrowerVerificationFlags[]
 
     title: ThingTitle;
@@ -29,7 +29,7 @@ export class Thing implements IThing {
         currentStatus: ThingStatus = ThingStatus.READY,
         description: string = "",
         imageUrls: string[] = [],
-        insuredAmount: IMoney | null,
+        purchaseCost: IMoney | null,
         requiredBorrowerFlags: BorrowerVerificationFlags[] = []
     ) {
         this.id = id
@@ -39,16 +39,15 @@ export class Thing implements IThing {
         this._status = currentStatus
         this.owner = owner
         this.storageLocation = storageLocation
-        this.insuredAmount = insuredAmount
+        this.purchaseCost = purchaseCost
         this.requiredBorrowerFlags = requiredBorrowerFlags
     }
 
-    get status(): ThingStatus {
+    public get status(): ThingStatus {
         return this._status
     }
 
     public set status(status: ThingStatus) {
         this._status = status
     }
-
 }

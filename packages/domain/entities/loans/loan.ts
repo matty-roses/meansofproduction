@@ -10,12 +10,12 @@ export class Loan implements ILoan {
     public readonly id: string
     public readonly item: IThing
     public readonly borrower: IBorrower
-    public readonly dueDate: Date
+    public readonly dueDate: Date | undefined
     private _dateReturned: Date | undefined
     private _status: LoanStatus
     public readonly returnLocation: Location
 
-    public constructor(id: string, item: IThing, borrower: IBorrower, dueDate: Date, status: LoanStatus = LoanStatus.LOANED,
+    public constructor(id: string, item: IThing, borrower: IBorrower, dueDate: Date | undefined, status: LoanStatus = LoanStatus.LOANED,
                        returnLocation: Location | null = null, dateReturned?: Date) {
         this.id = id
         this.item = item
@@ -44,15 +44,26 @@ export class Loan implements ILoan {
         return this._status
     }
 
-    public startReturn() {
-        this.lender.startReturn(this)
+    public startReturn(): ILoan {
         this._status = LoanStatus.RETURN_STARTED
         this._dateReturned = new Date()
+        return this
     }
 
-    public markItemDamaged() {
-        this.lender.finishReturn(this)
-        this._status = LoanStatus.RETURNED_DAMAGED
-        this.item.status = ThingStatus.DAMAGED
+    public finishReturn(thingStatus: ThingStatus): ILoan {
+        if(thingStatus == ThingStatus.DAMAGED){
+            this._status = LoanStatus.RETURNED_DAMAGED
+        } else{
+            this._status = LoanStatus.RETURNED
+        }
+        if(this._dateReturned > this.dueDate){
+            this._status = LoanStatus.OVERDUE
+        }
+        this.item.status = thingStatus
+        return this
+    }
+
+    public get permanentLoan(): boolean{
+        return this.dueDate == undefined
     }
 }

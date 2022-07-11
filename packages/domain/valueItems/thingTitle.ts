@@ -29,6 +29,6 @@ export class ThingTitle{
     }
 
     public get hash(): string{
-        return this.name + "|" + this.upc + "|" + this.isbn
+        return this.name.replace(" ", "-").toLowerCase()
     }
 }

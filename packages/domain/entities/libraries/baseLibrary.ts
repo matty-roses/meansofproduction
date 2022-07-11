@@ -4,30 +4,64 @@ import {IBorrower} from "../people/IBorrower";
 import {ILoan} from "../loans/ILoan";
 import {ThingTitle} from "../../valueItems/thingTitle";
 import {IWaitingListFactory} from "../../factories/IWaitingListFactory";
-import {IWaitingList} from "./IWaitingList";
+import {IWaitingList} from "../waitingLists/IWaitingList";
+import {Person} from "../people/person";
+import {IMoney} from "../../valueItems/money/IMoney";
 
 export abstract class BaseLibrary implements ILibrary{
-    private readonly _borrowers:IBorrower[]
+    private readonly _borrowers: IBorrower[]
+    private readonly _loans: ILoan[]
     readonly name: string;
     readonly waitingListFactory: IWaitingListFactory
-    readonly waitingListsByTitle: Map<string, IWaitingList>
+    readonly waitingListsByItemId: Map<string, IWaitingList>
+    readonly administrator: Person;
+    readonly maxFinesBeforeSuspension: IMoney
 
-    protected constructor(name: string, borrowers: Iterable<IBorrower>, waitingListFactory: IWaitingListFactory) {
+    protected constructor(name: string, administrator: Person, borrowers: Iterable<IBorrower>, waitingListFactory: IWaitingListFactory, maxFinesBeforeSuspension: IMoney, loans: Iterable<ILoan>) {
         this.name = name;
         this.waitingListFactory = waitingListFactory
         this._borrowers = []
+        this.administrator = administrator
         for (const b of borrowers){
             this._borrowers.push(b)
         }
-        this.waitingListsByTitle = new Map<string, IWaitingList>()
+        this.waitingListsByItemId= new Map<string, IWaitingList>()
+        this.maxFinesBeforeSuspension = maxFinesBeforeSuspension
+        this._loans = []
+        for(const l of loans){
+            this._loans.push(l)
+        }
     }
 
-    protected makeLoanId(): string{
-        return "guid"
-    }
+    abstract get allTitles(): Iterable<ThingTitle>
+    abstract get availableTitles(): Iterable<ThingTitle>
+
+    abstract borrow(item: IThing, borrower: IBorrower, until: Date): ILoan
+
+    abstract canBorrow(borrower: IBorrower): boolean
+
+    abstract startReturn(loan:ILoan): ILoan
+    abstract finishReturn(loan: ILoan): ILoan
+
+    abstract markAsDamaged(item: IThing): IThing;
 
     public get borrowers(): Iterable<IBorrower>{
         return this._borrowers
+    }
+
+    public addBorrower(borrower: IBorrower): IBorrower{
+        this._borrowers.push(borrower)
+        return borrower
+    }
+
+    public reserveItem(item: IThing, borrower: IBorrower): IWaitingList {
+        let list: IWaitingList | undefined = this.waitingListsByItemId.get(item.id)
+        if(!list){
+            list = this.waitingListFactory.createList(item)
+            this.waitingListsByItemId.set(item.id, list)
+        }
+        list.add(borrower)
+        return list
     }
 
     protected getTitlesFromItems(items: Iterable<IThing>): Iterable<ThingTitle>{
@@ -42,27 +76,43 @@ export abstract class BaseLibrary implements ILibrary{
         return titles
     }
 
-    public addBorrower(borrower: IBorrower): IBorrower{
-        this._borrowers.push(borrower)
-        return borrower
+    protected makeLoanId(): string{
+        return "guid"
     }
 
-    public reserveTitle(title: ThingTitle, borrower: IBorrower): IWaitingList {
-        let list: IWaitingList | undefined = this.waitingListsByTitle.get(title.hash)
-        if(!list){
-            list = this.waitingListFactory.createList(title)
-            this.waitingListsByTitle.set(title.hash, list)
+    private static compareLoans(a: ILoan, b: ILoan): number {
+        if(a.dueDate && b.dueDate){
+            return b.dueDate > a.dueDate ? 1 : -1
         }
-        list.add(borrower)
-        return list
+
+        // consider a null due date to be infinite
+        if(b.dueDate){
+            return 1
+        }
+
+        if(a.dueDate){
+            return -1
+        }
+        return 0
     }
 
-    abstract get allTitles(): Iterable<ThingTitle>
+    protected getBidForCost(item: IThing, borrower: IBorrower, amountToPay: IMoney): IMoney{
+        // get loans for the item
+        const itemLoans = this._loans
+            .filter(l => l.item.id == item.id)
+            .sort(BaseLibrary.compareLoans)
 
-    abstract borrow(item: IThing, borrower: IBorrower, until: Date): ILoan
+        // find how many times consecutively this borrower has borrowed this item
+        let numPreviousLoans = 0
+        for(const l of itemLoans){
+            if(l.borrower.id == borrower.id){
+                numPreviousLoans += 1
+            } else {
+                break;
+            }
+        }
 
-    abstract canBorrow(borrower: IBorrower): boolean
-
-    abstract return(loan:ILoan): ILoan
-
+        // multiple effective rate times this
+        return numPreviousLoans > 0 ? amountToPay.multiply(1/numPreviousLoans) : amountToPay
+    }
 }
